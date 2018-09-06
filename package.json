@@ -1,11 +1,11 @@
 {
-  "name": "vue-weixin-app",
+  "name": "vue-wechat-app",
   "version": "1.0.0",
   "description": "一款基于HBuilder+Vue高仿微信app",
   "author": "kriswuwenxiang <794783332@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --hot --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js"
