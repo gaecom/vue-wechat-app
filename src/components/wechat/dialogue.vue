@@ -13,7 +13,7 @@
                 <span class="parentheses" v-show='$route.query.group_num&&$route.query.group_num!=1'>{{$route.query.group_num}}</span>
             </div>
         </header>
-        <section class="dialogue-section clearfix" v-on:click="MenuOutsideClick">
+        <section class="dialogue-section clearfix" @click="MenuOutsideClick">
             <div class="row clearfix" v-for="item in msgInfo.msg">
                 <img :src="item.headerUrl" class="header">
                 <p class="text" v-more>{{item.text}}</p>
@@ -27,8 +27,8 @@
         </section>
         <footer class="dialogue-footer">
             <div class="component-dialogue-bar-person">
-                <span class="iconfont icon-dialogue-jianpan" v-show="!currentChatWay" v-on:click="currentChatWay=true"></span>
-                <span class="iconfont icon-dialogue-voice" v-show="currentChatWay" v-on:click="currentChatWay=false"></span>
+                <span class="iconfont icon-dialogue-jianpan" v-show="!currentChatWay" @click="currentChatWay=true"></span>
+                <span class="iconfont icon-dialogue-voice" v-show="currentChatWay" @click="currentChatWay=false"></span>
                 <div class="chat-way" v-show="!currentChatWay">
                     <div class="chat-say" v-press>
                         <span class="one">按住 说话</span>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="chat-way" v-show="currentChatWay">
-                    <input class="chat-txt" type="text" v-on:focus="focusIpt" v-on:blur="blurIpt"/>
+                    <input class="chat-txt" type="text" @focus="focusIpt" @blur="blurIpt"/>
                 </div>
                 <span class="expression iconfont icon-dialogue-smile"></span>
                 <span class="more iconfont icon-dialogue-jia"></span>

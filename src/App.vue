@@ -16,7 +16,7 @@
       </section>
       <!--底部导航 路由 -->
       <footer class="app-footer">
-        <wx-nav></wx-nav>
+        <wx-footer></wx-footer>
       </footer>
     </div>
     <!--其他店内页集合 有过渡效果-->
@@ -27,19 +27,19 @@
 </template>
 
 <script>
-  import welcome from './components/common/welcome.vue'
-  import WxHeader from './components/common/wx-header'
-  import WxNav from './components/common/wx-nav'
-  import search from './components/common/search'
-  import mixin from "./vuex/mixin.js" // 混合被单独放在 mixin.js 中管理
+  import WxHeader from '@/layout/WxHeader'
+  import WxFooter from '@/layout/WxFooter'
+  import Welcome from '@/components/Welcome'
+  import Search from '@/components/Search'
+  import mixin from "@/vuex/mixin.js" // 混合被单独放在 mixin.js 中管理
   window.mixin = mixin // 将 混合/mixin 暴露在窗口对象中，某些组件需要时，直接提取 window.mixin
   export default {
     name: 'app',
     components: {
       WxHeader,
-      WxNav,
-      search,
-      welcome
+      WxFooter,
+      Welcome,
+      Search,
     },
     data() {
       return {

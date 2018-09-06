@@ -97,11 +97,11 @@
     </div>
 </template>
 <script>
-    import search from "../common/search"
+  import Search from '@/components/Search'
     export default {
         mixins: [window.mixin],
         components: {
-            search
+            Search
         },
         data() {
             return {

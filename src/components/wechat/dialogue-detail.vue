@@ -3,7 +3,7 @@
         <header id="wx-header">
             <!--<div class="other"><span>添加朋友</span></div>-->
             <div class="center">
-                <div class="iconfont icon-return-arrow" v-on:click="$router.back()">
+                <div class="iconfont icon-return-arrow" @click="$router.back()">
                     <span>返回</span>
                 </div>
                 <span>聊天详情</span>

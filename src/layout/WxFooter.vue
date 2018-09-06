@@ -45,5 +45,5 @@
     }
 </script>
 <style>
-    @import "../../assets/css/wx-nav.css";
+    @import "../assets/css/wx-nav.css";
 </style>

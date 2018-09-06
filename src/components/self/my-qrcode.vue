@@ -3,7 +3,7 @@
     <div class="qrcode">
         <header id="wx-header">
             <div class="center">
-                <div class="iconfont icon-return-arrow" v-on:click="$router.back()">
+                <div class="iconfont icon-return-arrow" @click="$router.back()">
                     <span>返回</span>
                 </div>
                 <span>我的二维码</span>

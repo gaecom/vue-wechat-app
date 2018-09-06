@@ -8,11 +8,11 @@
   </div>
 </template>
 <script>
-    import search from "@/components/common/search"
+  import Search from '@/components/Search'
     import msgItem from "@/components/wechat/msg-item"
     export default {
         components: {
-            search,
+            Search,
             msgItem
         },
         mixins: [window.mixin],

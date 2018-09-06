@@ -28,10 +28,10 @@
 </div>
 </template>
 <script>
-    import search from "../common/search"
+  import Search from '@/components/Search'
     export default {
         components: {
-            search
+            Search
         },
         data() {
             return {
@@ -60,7 +60,7 @@
         height: 38px;
         margin-right: 10px;
     }
-    
+
     .header-box .header {
         height: 100%;
         display: flex;
@@ -71,14 +71,14 @@
         overflow: hidden;
         background: #dddbdb;
     }
-    
+
     .header-box .header img {
         width: 10%;
         height: auto;
         flex-grow: 2;
         border: 0;
     }
-    
+
     .multi-header img {
         margin: 1px;
     }

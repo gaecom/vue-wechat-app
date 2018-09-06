@@ -28,10 +28,10 @@
 </div>
 </template>
 <script>
-    import search from "../common/search"
+  import Search from '@/components/Search'
     export default {
         components: {
-            search
+            Search
         },
         data() {
             return {
@@ -75,7 +75,7 @@
     .official-account {
         padding-bottom: 20px;
     }
-    
+
     .official-account .weui-cell_access:active {
         background-color: rgba(177, 177, 177, 0.53)
     }
