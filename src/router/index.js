@@ -90,13 +90,13 @@ const routes = [{
     }, {
         path: '/explore',
         name: "发现",
-        component: resolve => require(["@/components/explore/explore.vue"], resolve)
+        component: resolve => require(["@/view/explore/Explore.vue"], resolve)
     }, {
-        path: '/explore/moments',
+        path: '/explore/circle-friends',
         name: "朋友圈",
         components: {
-            "default": resolve => require(["@/components/explore/explore.vue"], resolve),
-            "subPage": resolve => require(["@/components/explore/moments.vue"], resolve)
+            "default": resolve => require(["@/view/explore/Explore.vue"], resolve),
+            "subPage": resolve => require(["@/view/explore/CircleFriends.vue"], resolve)
         }
     }, {
         path: '/self',

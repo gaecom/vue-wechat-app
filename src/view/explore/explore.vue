@@ -3,7 +3,7 @@
   <div id="explore">
     <section>
       <div class="weui-cells">
-        <router-link to="/explore/moments" class="weui-cell weui-cell_access" tag="div" @click.native="momentNewMsg=false">
+        <router-link to="/explore/circle-friends" class="weui-cell weui-cell_access" tag="div" @click.native="momentNewMsg=false">
           <div class="weui-cell__hd">
             <img src="../../assets/images/find_icon-circle.png" >
           </div>
