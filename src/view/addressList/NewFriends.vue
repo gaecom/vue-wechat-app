@@ -4,7 +4,7 @@
         <header id="wx-header">
             <div class="other"><span>添加朋友</span></div>
             <div class="center">
-                <router-link to="/contact" tag="div" class="iconfont icon-return-arrow">
+                <router-link to="/addresslist" tag="div" class="iconfont icon-return-arrow">
                     <span>通讯录</span>
                 </router-link>
                 <span>新的朋友</span>
@@ -13,7 +13,7 @@
          <!--这里的 search 组件的样式也需要修改一下-->
         <search></search>
         <div class="weui-cells margin-top-0">
-            <router-link to="/contact/new-friends/mobile-contacts" tag="div" class="weui-cell">
+            <router-link to="/addresslist/new-friends/mobile-contacts" tag="div" class="weui-cell">
                 <dl class="add-tel-address">
                     <dt><span class="iconfont icon-iphone-address"></span></dt>
                     <dd>添加手机联系人</dd>

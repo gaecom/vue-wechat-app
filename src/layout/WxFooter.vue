@@ -7,7 +7,7 @@
             </dt>
             <dd>微信</dd>
         </router-link>
-		<router-link to="/contact" tag="dl">
+		<router-link to="/addresslist" tag="dl">
             <dt class="iconfont icon-contact" >
                 <!--<i class="new-msg-count">2</i>-->
             </dt>
