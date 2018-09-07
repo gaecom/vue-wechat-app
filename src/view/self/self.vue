@@ -50,8 +50,6 @@
             <p>卡券</p>
           </div>
         </router-link>
-      </div>
-      <div class="weui-cells">
         <router-link to="/self/album" class="weui-cell weui-cell_access">
           <div class="weui-cell__hd">
             <img src="../../assets/images/me_more-expression.png">
@@ -62,7 +60,7 @@
         </router-link>
       </div>
       <div class="weui-cells">
-        <router-link to="/self/settings" class="weui-cell weui-cell_access">
+        <router-link to="/self/setting" class="weui-cell weui-cell_access">
           <div class="weui-cell__hd">
             <img src="../../assets/images/me_more-setting.png">
           </div>

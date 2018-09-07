@@ -101,50 +101,35 @@ const routes = [{
     }, {
         path: '/self',
         name: "我",
-        component: resolve => require(["@/components/self/self.vue"], resolve)
+        component: resolve => require(["@/view/self/Self.vue"], resolve)
     }, {
         path: '/self/album',
-        components: { "default": resolve => require(["@/components/self/self.vue"], resolve), "subPage": resolve => require(["@/components/common/album.vue"], resolve) }
+        components: { "default": resolve => require(["@/view/self/Self.vue"], resolve), "subPage": resolve => require(["@/view/self/Album.vue"], resolve) }
     },
     {
-        path: '/self/settings',
-        components: { "default": resolve => require(["@/components/self/self.vue"], resolve), "subPage": resolve => require(["@/components/self/settings.vue"], resolve) }
+        path: '/self/setting',
+        components: { "default": resolve => require(["@/view/self/Self.vue"], resolve), "subPage": resolve => require(["@/view/self/setting/Setting.vue"], resolve) }
     }, {
-        path: '/self/settings/security',
-        components: { "subPage": resolve => require(["@/components/self/settings/security.vue"], resolve) }
+        path: '/self/setting/security',
+        components: { "subPage": resolve => require(["@/view/self/setting/Security.vue"], resolve) }
     },
     {
-        path: '/self/settings/notice',
-        components: { "subPage": resolve => require(["@/components/self/settings/notice.vue"], resolve) }
+        path: '/self/setting/notice',
+        components: { "subPage": resolve => require(["@/view/self/setting/Notice.vue"], resolve) }
     },
     {
-        path: '/self/settings/privacy',
-        components: { "subPage": resolve => require(["@/components/self/settings/privacy.vue"], resolve) }
+        path: '/self/setting/privacy',
+        components: { "subPage": resolve => require(["@/view/self/setting/Privacy.vue"], resolve) }
     }, {
-        path: '/self/settings/common',
-        components: { "subPage": resolve => require(["@/components/self/settings/common.vue"], resolve) }
+        path: '/self/setting/currency',
+        components: { "subPage": resolve => require(["@/view/self/setting/Currency.vue"], resolve) }
     },
     {
         path: '/self/profile',
-        components: { "default": resolve => require(["@/components/self/self.vue"], resolve), "subPage": resolve => require(["@/components/common/profile.vue"], resolve) }
+        components: { "default": resolve => require(["@/view/self/Self.vue"], resolve), "subPage": resolve => require(["@/view/self/profile/Profile.vue"], resolve) }
     }, {
         path: '/self/profile/my-qrcode',
-        components: { "subPage": resolve => require(["@/components/self/my-qrcode.vue"], resolve) }
-    }, {
-        path: '/self/settings',
-        components: { "subPage": resolve => require(["@/components/settings/settings.vue"], resolve) }
-    },
-    {
-        path: '/self/settings/common',
-        components: {
-            "subPage": resolve => require(["@/components/settings/common/common.vue"], resolve)
-        }
-    },
-    {
-        path: '/self/settings/common/language',
-        components: {
-            "subPage": resolve => require(["@/components/settings/common/language.vue"], resolve)
-        }
+        components: { "subPage": resolve => require(["@/view/self/profile/MyQrcode.vue"], resolve) }
     }
 
 ]
