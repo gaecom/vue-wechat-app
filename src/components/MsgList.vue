@@ -16,8 +16,7 @@
             </div>
             <div class="desc-box">
                 <!--使用过滤器 fmtDate 格式化时间-->
-                <!--<div class="desc-time">{{item.msg[item.msg.length-1].date | fmtDate('hh:ss')}}</div>-->
-                <div class="desc-time">{{item.msg[item.msg.length-1].date}}</div>
+                <div class="desc-time">{{item.msg[item.msg.length-1].date | fmtDate('hh:ss')}}</div>
                 <div class="desc-author" v-if="item.type=='group'">{{item.group_name}}</div>
                 <!--如果没有备注好友，则显示微信昵称-->
                 <div class="desc-author" v-else>{{item.user[0].remark||item.user[0].nickname}}</div>

@@ -1,36 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/wechat/wechat'
 
 Vue.use(Router)
-    //app整体由店面页和店内页组成 暂时并没有用到嵌套路由
-/*export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
-})*/
 
 const routes = [{
         path: '/',
         name: "微信",
-        component: resolve => require(["../components/wechat/wechat.vue"], resolve)
+        component: resolve => require(["@/view/wechat/Wechat.vue"], resolve)
     }, {
         path: '/wechat/dialogue',
         name: "",
         components: {
-            "default": resolve => require(["../components/wechat/wechat.vue"], resolve),
-            "subPage": resolve => require(["../components/wechat/dialogue.vue"], resolve)
+            "default": resolve => require(["@/view/wechat/Wechat.vue"], resolve),
+            "subPage": resolve => require(["../view/wechat/dialogue.vue"], resolve)
         }
     },
     {
         path: '/wehchat/add-friend',
         name: "",
         components: {
-            "default": resolve => require(["../components/wechat/wechat.vue"], resolve),
+            "default": resolve => require(["@/view/wechat/Wechat.vue"], resolve),
             "subPage": resolve => require(["../components/contact/add-friend.vue"], resolve)
         }
     },
@@ -38,14 +27,14 @@ const routes = [{
         path: '/wechat/dialogue/dialogue-info',
         name: "",
         components: {
-            "subPage": resolve => require(["../components/wechat/dialogue-info.vue"], resolve)
+            "subPage": resolve => require(["../view/wechat/DialogueInfo.vue"], resolve)
         }
     },
     {
         path: '/wechat/dialogue/dialogue-detail',
         name: "",
         components: {
-            "subPage": resolve => require(["../components/wechat/dialogue-detail.vue"], resolve)
+            "subPage": resolve => require(["../view/wechat/DialogueDetail.vue"], resolve)
         }
     },
     {
