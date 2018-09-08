@@ -3,7 +3,8 @@
   <div id="wechat">
     <ul class="wechat-list">
       <!--props传递消息对象 baseMsgObj -->
-      <msg-list v-for="baseMsgObj in $store.state.msgList.baseMsg" :item="baseMsgObj" class="list-row line-bottom" :key="baseMsgObj.mid"></msg-list>
+      <msg-list v-for="baseMsgObj in $store.state.msgList.baseMsg" :item="baseMsgObj" class="list-row line-bottom"
+                :key="baseMsgObj.mid"></msg-list>
     </ul>
   </div>
 </template>
@@ -18,7 +19,7 @@
     mixins: [window.mixin],
     data() {
       return {
-          "pageName": "微信"
+        "pageName": "微信"
       }
     }
   }

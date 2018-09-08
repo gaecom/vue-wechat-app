@@ -77,17 +77,20 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    -webkit-user-select: none;
-            user-select: none;
-    -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
-a[href^="javascript"]{-webkit-touch-callout: none;}
+
+a[href^="javascript"] {
+  -webkit-touch-callout: none;
+}
 
 article,
 aside,
@@ -100,38 +103,38 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
+  line-height: 1;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: ' ';
-    content: none;
+  content: ' ';
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 body {
-    font: 13px/1.5 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial, sans-serif;
+  font: 13px/1.5 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial, sans-serif;
 }
 
 h1,
@@ -140,68 +143,68 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 input {
-    outline: 0;
+  outline: 0;
 }
 
 .hidden {
-    float: left;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+  float: left;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .hiddenText {
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .none {
-    display: none;
+  display: none;
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .clearfix:before,
 .clearfix:after {
-    content: "";
-    display: table;
+  content: "";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 .clearfix {
-    zoom: 1;
+  zoom: 1;
 }
 
 table {
-    margin-left: 1px;
+  margin-left: 1px;
 }
 
 table td,
 table th {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    vertical-align: middle;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
 }
 
 a {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
