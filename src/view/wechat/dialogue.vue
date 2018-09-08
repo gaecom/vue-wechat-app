@@ -2,8 +2,8 @@
   <div class="dialogue">
     <header id="wx-header">
       <div class="other">
+        <router-link :to="{path:'/wechat/dialogue/dialogue-detail',query: { msgInfo: msgInfo}}" tag="span" class="iconfont icon-chat-friends" v-show="$route.query.group_num==1"></router-link>
         <router-link :to="{path:'/wechat/dialogue/dialogue-info',query: { msgInfo: msgInfo}}" tag="span" class="iconfont icon-chat-group" v-show="$route.query.group_num&&$route.query.group_num!=1"></router-link>
-        <router-link :to="{path:'/addresslist/add-friend',query: { msgInfo: msgInfo}}" tag="span" class="iconfont icon-chat-friends" v-show="$route.query.group_num==1"></router-link>
       </div>
       <div class="center">
         <router-link to="/" tag="div" class="iconfont icon-return-arrow">

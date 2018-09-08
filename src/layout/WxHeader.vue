@@ -4,7 +4,7 @@
     <!--右上角图标-->
     <div class="other">
       <!--只在“微信”页显示 更多图标-->
-      <span class="iconfont icon-tips-jia" v-show="$route.path==='/'" @click="$store.commit('toggleTipsStatus')"></span>
+      <span class="iconfont icon-tips-jia" v-show="$route.path==='/wechat'" @click="$store.commit('toggleTipsStatus')"></span>
       <!--只在“通讯录”页显示 显示添加好友图标-->
       <router-link tag="span" to="/addresslist/add-friend" class="iconfont icon-tips-add-friend" v-show="$route.path==='/contact'"></router-link>
       <!--只在“添加朋友”页显示 -->
