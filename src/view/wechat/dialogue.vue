@@ -2,15 +2,19 @@
   <div class="dialogue">
     <header id="wx-header">
       <div class="other">
-        <router-link :to="{path:'/wechat/dialogue/dialogue-detail',query: { msgInfo: msgInfo}}" tag="span" class="iconfont icon-chat-friends" v-show="$route.query.group_num==1"></router-link>
-        <router-link :to="{path:'/wechat/dialogue/dialogue-info',query: { msgInfo: msgInfo}}" tag="span" class="iconfont icon-chat-group" v-show="$route.query.group_num&&$route.query.group_num!=1"></router-link>
+        <router-link :to="{path:'/wechat/dialogue/dialogue-detail',query: { msgInfo: msgInfo}}" tag="span"
+                     class="iconfont icon-chat-friends" v-show="$route.query.group_num==1"></router-link>
+        <router-link :to="{path:'/wechat/dialogue/dialogue-info',query: { msgInfo: msgInfo}}" tag="span"
+                     class="iconfont icon-chat-group"
+                     v-show="$route.query.group_num&&$route.query.group_num!=1"></router-link>
       </div>
       <div class="center">
         <router-link to="/" tag="div" class="iconfont icon-return-arrow">
           <span>微信</span>
         </router-link>
         <span>{{pageName}}</span>
-        <span class="parentheses" v-show='$route.query.group_num&&$route.query.group_num!=1'>{{$route.query.group_num}}</span>
+        <span class="parentheses"
+              v-show='$route.query.group_num&&$route.query.group_num!=1'>{{$route.query.group_num}}</span>
       </div>
     </header>
     <section class="dialogue-section clearfix" @click="MenuOutsideClick">
@@ -19,11 +23,11 @@
         <p class="text" v-more>{{item.text}}</p>
       </div>
       <span class="msg-more" id="msg-more"><ul>
-          <li>复制</li>
-          <li>转发</li>
-          <li>收藏</li>
-          <li>删除</li>
-        </ul></span>
+        <li>复制</li>
+        <li>转发</li>
+        <li>收藏</li>
+        <li>删除</li>
+      </ul></span>
     </section>
     <footer class="dialogue-footer">
       <div class="component-dialogue-bar-person">
@@ -74,13 +78,13 @@
         pageName: this.$route.query.name,
         currentChatWay: true, //ture为键盘打字 false为语音输入
         timer: null
-          // sayActive: false // false 键盘打字 true 语音输入
+        // sayActive: false // false 键盘打字 true 语音输入
       }
     },
     beforeRouteEnter(to, from, next) {
       next(vm => {
         vm.$store.commit("setPageName", vm.$route.query.name)
-      })
+    })
     },
     computed: {
       msgInfo() {
@@ -99,31 +103,31 @@
             recordingCancel = document.querySelector('.recording-cancel'),
             startTx, startTy;
 
-          element.addEventListener('touchstart', function(e) {
+          element.addEventListener('touchstart', function (e) {
             // 用bind时，vue还没插入到dom,故dom获取为 undefine，用 inserted 代替 bind,也可以开个0秒的定时器
             element.className = "chat-say say-active"
             recording.style.display = recordingVoice.style.display = "block"
-              // console.log('start')
+            // console.log('start')
             var touches = e.touches[0]
             startTx = touches.clientX
             startTy = touches.clientY
             e.preventDefault()
           }, false)
-          element.addEventListener('touchend', function(e) {
+          element.addEventListener('touchend', function (e) {
             /*var touches = e.changedTouches[0];
-            var distanceY = startTy - touches.clientY;
-            if (distanceY > 50) {
-              console.log("取消发送信息");
-            }else{
-              console.log("发送信息");
-            }*/
+             var distanceY = startTy - touches.clientY;
+             if (distanceY > 50) {
+             console.log("取消发送信息");
+             }else{
+             console.log("发送信息");
+             }*/
 
             element.className = "chat-say"
             recordingCancel.style.display = recording.style.display = recordingVoice.style.display = "none"
-              // console.log('end')
+            // console.log('end')
             e.preventDefault()
           }, false)
-          element.addEventListener('touchmove', function(e) {
+          element.addEventListener('touchmove', function (e) {
             var touches = e.changedTouches[0],
               endTx = touches.clientX,
               endTy = touches.clientY,
@@ -134,7 +138,7 @@
               element.className = "chat-say"
               recordingVoice.style.display = "none"
               recordingCancel.style.display = "block"
-            }else{
+            } else {
               element.className = "chat-say say-active"
               recordingVoice.style.display = "block"
               recordingCancel.style.display = "none"
@@ -147,30 +151,32 @@
       more: {
         bind(element, binding) {
           var startTx, startTy
-          element.addEventListener('touchstart', function(e) {
+          element.addEventListener('touchstart', function (e) {
             var msgMore = document.getElementById('msg-more'),
               touches = e.touches[0];
             startTx = touches.clientX
             startTy = touches.clientY
 
             clearTimeout(this.timer)
-            this.timer = setTimeout(()=>{
+            this.timer = setTimeout(() => {
               // 控制菜单的位置
               msgMore.style.left = ((startTx - 18) > 180 ? 180 : (startTx - 18)) + 'px'
-              msgMore.style.top = (element.offsetTop - 33) + 'px'
-              msgMore.style.display = "block"
-              element.style.backgroundColor = '#e5e5e5'
-            },500)
+            msgMore.style.top = (element.offsetTop - 33) + 'px'
+            msgMore.style.display = "block"
+            element.style.backgroundColor = '#e5e5e5'
+          },
+            500
+            )
 
           }, false)
-          element.addEventListener('touchmove', function(e) {
+          element.addEventListener('touchmove', function (e) {
             var touches = e.changedTouches[0],
               disY = touches.clientY;
-            if (Math.abs(disY-startTy)>10) {
+            if (Math.abs(disY - startTy) > 10) {
               clearTimeout(this.timer)
             }
           }, false)
-          element.addEventListener('touchend', function(e) {
+          element.addEventListener('touchend', function (e) {
             clearTimeout(this.timer)
           }, false)
         }
@@ -179,7 +185,7 @@
     methods: {
       // 解决输入法被激活时 底部输入框被遮住问题
       focusIpt() {
-        this.timer = setInterval(function() {
+        this.timer = setInterval(function () {
           document.body.scrollTop = document.body.scrollHeight
         }, 100)
       },
@@ -194,7 +200,8 @@
 
         } else {
           msgMore.style.display = 'none'
-          container.forEach(item=>item.style.backgroundColor='#fff')
+          container.forEach(item => item.style.backgroundColor = '#fff'
+        )
         }
       }
     }
@@ -202,6 +209,7 @@
 </script>
 <style>
   @import "../../assets/css/dialogue.css";
+
   .say-active {
     background: #c6c7ca;
   }
