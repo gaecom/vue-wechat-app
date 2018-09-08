@@ -34,7 +34,7 @@
                     10086
                 </div>
             </div>
-            <router-link to="/self/profile/my-qrcode" class="weui-cell weui-cell_access">
+            <router-link to="/self/profile/myqrcode" class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd">
                     <p>我的二维码</p>
                 </div>
