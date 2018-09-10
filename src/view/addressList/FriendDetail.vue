@@ -65,7 +65,7 @@
   </div>
 </template>
 <script>
-  import contact from "../../vuex/contacts"
+  import contact from "../../vuex/data/contacts"
   export default {
     data() {
       return {

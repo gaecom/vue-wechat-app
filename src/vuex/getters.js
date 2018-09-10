@@ -1,7 +1,6 @@
+// 全局getters
 const getters = {
-
   //  从联系人中提取出首字母 再排序
-
   contactsInitialList: state => {
     var initialList = [],
       allContacts = state.allContacts,
@@ -18,7 +17,7 @@ const getters = {
   contactsList: (state, getters) => {
     var contactsList = {},
       allContacts = state.allContacts,
-      max = allContacts.length;
+      max = allContacts.length
     for (var i = 0; i < getters.contactsInitialList.length; i++) {
       var protoTypeName = getters.contactsInitialList[i]
       contactsList[protoTypeName] = []

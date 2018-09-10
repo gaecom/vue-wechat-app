@@ -80,7 +80,6 @@
 </template>
 <script>
   export default {
-    mixins: [window.mixin],
     data() {
       return {
         pageName: "发现",

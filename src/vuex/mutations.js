@@ -1,3 +1,4 @@
+// 全局mutations
 const mutations = {
   //切换语言 后期需要
   switchLang(state, lang) {

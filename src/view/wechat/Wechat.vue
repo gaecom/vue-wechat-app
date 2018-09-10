@@ -16,7 +16,6 @@
       Search,
       MsgList
     },
-    mixins: [window.mixin],
     data() {
       return {
         "pageName": "微信"

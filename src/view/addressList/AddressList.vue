@@ -52,7 +52,6 @@
 </template>
 <script>
   export default {
-    mixins: [window.mixin],
     data() {
       return {
         "pageName": "通讯录"

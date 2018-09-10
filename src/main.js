@@ -3,7 +3,7 @@ import vuex from 'vue'
 import FastClick from 'fastclick'
 import App from './App'
 import router from './router'
-import store from './vuex/store'
+import store from './vuex'
 import filters from './filters'
 
 //Vue.use(vuex)

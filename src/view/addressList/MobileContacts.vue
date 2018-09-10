@@ -109,7 +109,6 @@
 <script>
   import Search from '@/components/Search'
   export default {
-    mixins: [window.mixin],
     components: {
       Search
     },
