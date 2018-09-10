@@ -1,5 +1,4 @@
-
-<template>
+<template>
   <div id="contact">
     <section>
       <div class="weui-cells_contact-head weui-cells weui-cells_access" style="margin-top:-1px">
@@ -84,6 +83,6 @@
     }
   }
 </script>
-<style>
-  @import "../../assets/css/contact.css";
+<style lang="less" scoped>
+  @import "../../assets/less/contact.less";
 </style>

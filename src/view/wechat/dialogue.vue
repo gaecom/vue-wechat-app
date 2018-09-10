@@ -207,10 +207,6 @@
     }
   }
 </script>
-<style>
-  @import "../../assets/css/dialogue.css";
-
-  .say-active {
-    background: #c6c7ca;
-  }
+<style lang="less" scoped>
+  @import "../../assets/less/dialogue.less";
 </style>

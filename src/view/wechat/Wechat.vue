@@ -24,6 +24,6 @@
     }
   }
 </script>
-<style>
-  @import "../../assets/css/wechat.css";
+<style lang="less">
+  @import "../../assets/less/wechat.less";
 </style>

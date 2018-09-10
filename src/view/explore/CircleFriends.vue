@@ -367,6 +367,6 @@
   }
 
 </script>
-<style>
-  @import "../../assets/css/moments.css";
+<style lang="less" scoped>
+  @import "../../assets/less/moments.less";
 </style>

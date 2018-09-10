@@ -64,6 +64,6 @@
     }
   }
 </script>
-<style>
-
+<style lang="less">
+  @import "../assets/less/wx-header.less";
 </style>

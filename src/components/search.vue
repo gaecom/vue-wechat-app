@@ -58,6 +58,6 @@
     }
   }
 </script>
-<style>
-  @import "../assets/css/search.css";
+<style lang="less" scoped>
+  @import "../assets/less/search.less";
 </style>

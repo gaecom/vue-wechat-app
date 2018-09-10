@@ -1,7 +1,7 @@
 <template>
   <div id="wx-nav">
     <nav>
-      <router-link to="/" tag="dl" exact>
+      <router-link to="/wechat" tag="dl" exact>
         <dt class="iconfont icon-wechat">
           <i class="new-msg-count" v-show="$store.state.newMsgCount">{{$store.state.newMsgCount}}</i>
         </dt>
@@ -21,7 +21,7 @@
       </router-link>
       <router-link to="/self" tag="dl">
         <dt class="iconfont icon-me">
-          <!--<i class="new-msg-dot"></i>-->
+
         </dt>
         <dd>我</dd>
       </router-link>
@@ -42,6 +42,6 @@
     }
   }
 </script>
-<style>
-  @import "../assets/css/wx-nav.css";
+<style lang="less">
+  @import "../assets/less/wx-nav.less";
 </style>

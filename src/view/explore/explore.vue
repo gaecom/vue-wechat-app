@@ -92,6 +92,6 @@
     }
   }
 </script>
-<style>
-  @import "../../assets/css/explore.css";
+<style lang="less" scoped>
+  @import "../../assets/less/explore.less";
 </style>

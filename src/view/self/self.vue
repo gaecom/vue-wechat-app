@@ -90,6 +90,6 @@
     }
   }
 </script>
-<style>
-  @import "../../assets/css/self.css";
+<style lang="less" scoped>
+  @import "../../assets/less/self.less";
 </style>
