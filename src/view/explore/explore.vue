@@ -82,7 +82,6 @@
   export default {
     data() {
       return {
-        pageName: "发现",
         momentNewMsg: true
       }
     },

@@ -98,7 +98,7 @@
   export default {
     data() {
       return {
-        pageName: "个人信息"
+
       }
     }
   }

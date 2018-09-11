@@ -18,15 +18,19 @@
           </div>
         </router-link>
       </div>
+
       <div class="weui-cells">
         <router-link to="/self/album" class="weui-cell weui-cell_access">
           <div class="weui-cell__hd">
-            <img src="../../assets/images/me_more-my-album.png">
+            <img src="../../assets/images/me_more-my-bank-card.png">
           </div>
           <div class="weui-cell__bd">
-            <p>相册</p>
+            <p>钱包</p>
           </div>
         </router-link>
+      </div>
+
+      <div class="weui-cells">
         <router-link to="/self/album" class="weui-cell weui-cell_access">
           <div class="weui-cell__hd">
             <img src="../../assets/images/me_more-my-favorites.png">
@@ -37,10 +41,10 @@
         </router-link>
         <router-link to="/self/album" class="weui-cell weui-cell_access">
           <div class="weui-cell__hd">
-            <img src="../../assets/images/me_more-my-bank-card.png">
+            <img src="../../assets/images/me_more-my-album.png">
           </div>
           <div class="weui-cell__bd">
-            <p>钱包</p>
+            <p>相册</p>
           </div>
         </router-link>
         <router-link to="/self/album" class="weui-cell weui-cell_access">
@@ -60,6 +64,7 @@
           </div>
         </router-link>
       </div>
+
       <div class="weui-cells">
         <router-link to="/self/setting" class="weui-cell weui-cell_access">
           <div class="weui-cell__hd">
@@ -78,7 +83,7 @@
   export default {
     data() {
       return {
-        "pageName": "我"
+
       }
     },
     mounted() {
