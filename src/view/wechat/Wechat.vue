@@ -18,7 +18,7 @@
     },
     data() {
       return {
-        "pageName": "微信"
+
       }
     }
   }

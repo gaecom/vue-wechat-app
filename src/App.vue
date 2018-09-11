@@ -4,17 +4,17 @@
     <div class="outter" :class="{'hideLeft':$route.path.split('/').length>2}">
       <!--通用头部-->
       <header class="app-header" :class="{'header-hide':!$store.state.headerStatus}">
-        <wx-header :pageName="pageName"></wx-header>
+        <wx-header></wx-header>
       </header>
       <!--搜索框 只在“微信”和“通讯录”页面下显示-->
       <search v-show="$route.path.indexOf('explore')===-1&&$route.path.indexOf('self')===-1"></search>
-      <!--四个门面页 “微信” “通讯录” “发现” “我”-->
+      <!--四个导航页 “微信” “通讯录” “发现” “我”-->
       <section class="app-content">
         <keep-alive>
           <router-view name="default"></router-view>
         </keep-alive>
       </section>
-      <!--底部导航 路由 -->
+      <!--底部导航 -->
       <footer class="app-footer">
         <wx-footer></wx-footer>
       </footer>
@@ -42,27 +42,28 @@
     },
     data() {
       return {
-        "pageName": "",
         "routerAnimate": false,
         "enterAnimate": "", //页面进入动效
         "leaveAnimate": "" //页面离开动效
       }
     },
     watch: {
-      // 监听 $route 为店内页设置不同的过渡效果
+      // 监听 $route 为微信页面跳转设置不同的过渡效果
       "$route" (to, from) {
         const toDepth = to.path.split('/').length
         const fromDepth = from.path.split('/').length
-        if (toDepth === 2) {
+        if (toDepth === 2) { //设置页面头部标题
           this.$store.commit("setPageName", to.name)
         }
+
         //同一级页面无需设置过渡效果
         if (toDepth === fromDepth) {
           return;
         }
         this.enterAnimate = toDepth > fromDepth ? "animated fadeInRight" : "animated fadeInLeft"
         this.leaveAnimate = toDepth > fromDepth ? "animated fadeOutLeft" : "animated fadeOutRight"
-        // 从店面页进入店内页 需要对店内页重新设置离开动效 因为他们处于不同 name 的 router-view
+
+        // 从导航页进入具体页面 需要重新设置离开动效 因为他们处于不同的 router-view
         if (toDepth === 3) {
           this.leaveAnimate = "animated fadeOutRight"
         }

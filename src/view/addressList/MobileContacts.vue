@@ -114,7 +114,7 @@
     },
     data() {
       return {
-        pageName: "通讯录朋友"
+
       }
     }
   }

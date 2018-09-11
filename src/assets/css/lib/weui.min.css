@@ -461,8 +461,8 @@ input.weui-btn_plain-primary {
 }
 
 .weui-cells__title {
-  margin-top: .77em;
-  margin-bottom: .3em;
+  /*margin-top: .77em;*/
+  /*margin-bottom: .3em;*/
   padding-left: 15px;
   padding-right: 15px;
   color: #999;

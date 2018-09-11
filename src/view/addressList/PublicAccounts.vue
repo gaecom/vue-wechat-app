@@ -35,7 +35,7 @@
     },
     data() {
       return {
-        pageName: ""
+
       }
     },
     computed: {

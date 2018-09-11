@@ -11,10 +11,6 @@ const mutations = {
   setPageName(state, name) {
     state.currentPageName = name
   },
-  //设置前一页名字 已遗弃
-  // setBackPageName(state, name) {
-  //     state.backPageName = name
-  // },
   //当 search 组件全屏/非全屏时 切换公共头部状态
   toggleHeaderStatus(state, status) {
     state.headerStatus = status

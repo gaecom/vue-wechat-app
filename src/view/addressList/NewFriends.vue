@@ -59,7 +59,7 @@
     },
     data() {
       return {
-        pageName: "新的朋友"
+
       }
     }
   }

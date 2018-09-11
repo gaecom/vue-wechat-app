@@ -54,7 +54,7 @@
   export default {
     data() {
       return {
-        "pageName": "通讯录"
+
       }
     },
     mounted() {
