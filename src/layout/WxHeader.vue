@@ -5,20 +5,10 @@
       <span class="iconfont icon-tips-jia" v-show="$route.path==='/wechat'" @click="$store.commit('toggleTipsStatus')"></span>
       <ul class="tips-menu" :class="[$store.state.tipsStatus?'tips-open':'tips-close']"
           @click="$store.commit('toggleTipsStatus', -1)">
-        <li>
-          <span class="iconfont icon-tips-xiaoxi"></span>
-          <div>发起群聊</div>
-        </li>
-        <router-link tag="li" to="/addresslist/add-friend">
-          <span class="iconfont icon-tips-add-friend"></span>
-          <div>添加朋友</div>
+        <router-link v-for="(item,index) in tipsMenu" :key="index" :to="item.to" tag="li">
+          <span class="iconfont" :class="item.icon"></span>
+          <div>{{ item.name }}</div>
         </router-link>
-        <li><span class="iconfont icon-tips-saoyisao"></span>
-          <div>扫一扫</div>
-        </li>
-        <li><span class="iconfont icon-tips-fukuan"></span>
-          <div>收付款</div>
-        </li>
       </ul>
     </div>
 
@@ -33,12 +23,30 @@
   export default {
     data() {
       return {
-
+        tipsMenu: [
+          {
+            name: '发起群聊',
+            to: '',
+            icon: 'icon-tips-xiaoxi'
+          },
+          {
+            name: '添加朋友',
+            to: '/addresslist/add-friend',
+            icon: 'icon-tips-add-friend'
+          },
+          {
+            name: '扫一扫',
+            to: '',
+            icon: 'icon-tips-saoyisao'
+          },
+          {
+            name: '收付款',
+            to: '',
+            icon: 'icon-tips-fukuan'
+          }
+        ]
       }
     },
-    methods: {
-
-    }
   }
 </script>
 <style lang="less">

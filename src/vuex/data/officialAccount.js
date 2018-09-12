@@ -1,4 +1,4 @@
-const OfficialAccounts = [{
+const officialAccounts = [{
   wxid: "Google_Developers",
   name: "谷歌开发者",
   headerUrl: "http://cdn.sinacloud.net/vue-wechat/images/OfficialAccount/google-dev.JPG",
@@ -34,4 +34,4 @@ const OfficialAccounts = [{
   owner: "腾讯技术有限公司",
   initial: "Y"
 }]
-export default OfficialAccounts
+export default officialAccounts

@@ -12,7 +12,7 @@
     <!--这里的 search 组件的样式也需要修改一下-->
     <search></search>
     <!--公众号集合-->
-    <template v-for="(value,key) in OfficialAccountsList">
+    <template v-for="(value,key) in officialAccountsList">
       <div class="weui-cells__title">{{key}}</div>
       <div class="weui-cells">
         <div class="weui-cell weui-cell_access" v-for="item in value">
@@ -39,33 +39,33 @@
       }
     },
     computed: {
-      // 提取公众号首字母 排序，所有公众号被存放在 OfficialAccounts.js 中
+      // 提取公众号首字母 排序，所有公众号被存放在 officialAccounts.js 中
       initialList: function () {
         var initialList = [],
-          OfficialAccounts = this.$store.state.OfficialAccounts,
-          max = OfficialAccounts.length
+          officialAccounts = this.$store.state.officialAccounts,
+          max = officialAccounts.length
         for (var i = 0; i < max; i++) {
-          if (initialList.indexOf(OfficialAccounts[i].initial) == -1) {
-            initialList.push(OfficialAccounts[i].initial)
+          if (initialList.indexOf(officialAccounts[i].initial) == -1) {
+            initialList.push(officialAccounts[i].initial)
           }
         }
         return initialList.sort()
       },
       // 将公众号按照首字母分类
-      OfficialAccountsList() {
-        var OfficialAccountsList = {},
-          OfficialAccounts = this.$store.state.OfficialAccounts,
-          max = OfficialAccounts.length;
+      officialAccountsList() {
+        var officialAccountsList = {},
+          officialAccounts = this.$store.state.officialAccounts,
+          max = officialAccounts.length;
         for (var i = 0; i < this.initialList.length; i++) {
           var protoTypeName = this.initialList[i]
-          OfficialAccountsList[protoTypeName] = []
+          officialAccountsList[protoTypeName] = []
           for (var j = 0; j < max; j++) {
-            if (OfficialAccounts[j].initial === protoTypeName) {
-              OfficialAccountsList[protoTypeName].push(OfficialAccounts[j])
+            if (officialAccounts[j].initial === protoTypeName) {
+              officialAccountsList[protoTypeName].push(officialAccounts[j])
             }
           }
         }
-        return OfficialAccountsList
+        return officialAccountsList
       }
     }
 

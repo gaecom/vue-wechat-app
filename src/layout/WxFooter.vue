@@ -1,29 +1,13 @@
 <template>
   <div id="wx-nav">
     <nav>
-      <router-link to="/wechat" tag="dl" exact>
-        <dt class="iconfont icon-wechat">
-          <i class="new-msg-count" v-show="$store.state.newMsgCount">{{$store.state.newMsgCount}}</i>
+      <router-link  v-for="(item,index) in navMenu" :key="index" :to="item.to" tag="dl">
+        <dt class="iconfont" :class="item.icon">
+          <i class="new-msg-count" v-if="item.to==='/wechat'" v-show="$store.state.newMsgCount">{{$store.state.newMsgCount}}</i>
+          <i class="new-msg-dot" v-if="item.to==='/explore'" v-show="item.msgNum"></i>
+          <i class="new-msg-count" v-else v-show="item.msgNum">{{ item.msgNum }}</i>
         </dt>
-        <dd>微信</dd>
-      </router-link>
-      <router-link to="/addresslist" tag="dl">
-        <dt class="iconfont icon-contact">
-          <!--<i class="new-msg-count">2</i>-->
-        </dt>
-        <dd>通讯录</dd>
-      </router-link>
-      <router-link to="/explore" tag="dl">
-        <dt class="iconfont icon-find">
-          <i class="new-msg-dot"></i>
-        </dt>
-        <dd>发现</dd>
-      </router-link>
-      <router-link to="/self" tag="dl">
-        <dt class="iconfont icon-me">
-
-        </dt>
-        <dd>我</dd>
+        <dd>{{ item.name }}</dd>
       </router-link>
     </nav>
   </div>
@@ -31,7 +15,34 @@
 <script>
   export default {
     data() {
-      return {}
+      return {
+        navMenu: [
+          {
+            name: '微信',
+            to: '/wechat',
+            icon: 'icon-wechat',
+            msgNum: null
+          },
+          {
+            name: '通讯录',
+            to: '/addresslist',
+            icon: 'icon-contact',
+            msgNum: 1
+          },
+          {
+            name: '发现',
+            to: '/explore',
+            icon: 'icon-find',
+            msgNum: 1
+          },
+          {
+            name: '我',
+            to: '/self',
+            icon: 'icon-me',
+            msgNum: null
+          },
+        ]
+      }
     },
     mounted() {
       for (var i in this.$store.state.msgList.baseMsg) {
