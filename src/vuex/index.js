@@ -4,6 +4,7 @@ import state from './state'
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
+import chat from './modules/chat.js'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,6 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-
+    chat,
   }
 })
