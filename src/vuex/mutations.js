@@ -43,6 +43,15 @@ const mutations = {
   //取消置顶消息 待完成
   cancelMsgStick(state, mid) {
 
-  }
+  },
+
+  //新增一条发送消息
+  addMsg: (state, parmas) => {
+    state.msgList.baseMsg.forEach(function(item, index) {
+      if(item.mid == parmas.mid) {
+        item.msg.push(parmas.item)
+      }
+    })
+  },
 }
 export default mutations

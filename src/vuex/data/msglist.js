@@ -10,17 +10,30 @@ const msglist = {
     "newMsgCount": 1,
     "quiet": false, // true：消息免打扰 false：提示此好友/群的新消息
     "msg": [{ //对话框的聊天记录 新消息 push 进
-      "text": "长按这些白色框消息，唤醒消息操作菜单，长按这些白色框消息，唤醒消息操作菜单",
+      "sender": 'ad',
+      "type": 'text',
+      "content": "长按这些白色框消息，唤醒消息操作菜单，长按这些白色框消息，唤醒消息操作菜单",
       "date": 1488117964495,
       "name": "阿荡",
       "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
     }, {
-      "text": '点击空白处，操作菜单消失',
+      "sender": 'ad',
+      "type": 'text',
+      "content": '点击空白处，操作菜单消失',
       "date": 1488117964495,
       "name": "阿荡",
       "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
     }, {
-      "text": '来呀 快活啊',
+      "sender": 'self',
+      "type": 'text',
+      "content": '你好',
+      "date": 1488117964495,
+      "name": "我",
+      "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
+    }, {
+      "sender": 'ad',
+      "type": 'text',
+      "content": '来呀 快活啊',
       "date": 1488117964495,
       "name": "阿荡",
       "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
@@ -36,22 +49,28 @@ const msglist = {
       "newMsgCount": 1,
       "quiet": true,
       "msg": [{
-        "text": "长按消息，唤醒消息操作菜单",
+        "sender": 'yh',
+        "type": 'text',
+        "content": "长按消息，唤醒消息操作菜单",
         "date": 1488117964495,
         "name": "夜华",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/yehua.jpg"
       }, {
-        "text": '点击空白处，操作菜单消失',
+        "sender": 'ad',
+        "type": 'text',
+        "content": '点击空白处，操作菜单消失',
         "date": 1488117964495,
         "name": "阿荡",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
       },
-        {
-          "text": '我试一试',
-          "date": 1488117964495,
-          "name": "夜华",
-          "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/yehua.jpg"
-        }
+      {
+        "sender": 'yh',
+        "type": 'text',
+        "content": '我试一试',
+        "date": 1488117964495,
+        "name": "夜华",
+        "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/yehua.jpg"
+      }
       ],
       "user": [contact.getUserInfo('wxid_zhaohd'), contact.getUserInfo('wxid_yehua')]
     },
@@ -64,7 +83,9 @@ const msglist = {
       "newMsgCount": 1,
       "quiet": true,
       "msg": [{
-        "text": '冒个泡',
+        "sender": 'zgl',
+        "type": 'text',
+        "content": '冒个泡',
         "date": 1488117964495,
         "name": "诸葛亮",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/zhugeliang.jpg"
@@ -80,17 +101,23 @@ const msglist = {
       "newMsgCount": 4,
       "quiet": false,
       "msg": [{
-        "text": "长按消息，唤醒消息操作菜单",
+        "sender": 'sq',
+        "type": 'text',
+        "content": "长按消息，唤醒消息操作菜单",
         "date": 1488117964495,
         "name": "孙权",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/sunquan.jpg"
       }, {
-        "text": '点击空白处，操作菜单消失',
+        "sender": 'sq',
+        "type": 'text',
+        "content": '点击空白处，操作菜单消失',
         "date": 1488117964495,
         "name": "孙权",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/sunquan.jpg"
       }, {
-        "text": '容我三思',
+        "sender": 'sq',
+        "type": 'text',
+        "content": '容我三思',
         "date": 1488117964495,
         "name": "孙权",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/sunquan.jpg"
@@ -106,7 +133,9 @@ const msglist = {
       "newMsgCount": 4,
       "quiet": false,
       "msg": [{
-        "text": '夫君,身体要紧~ ',
+        "sender": 'ssx',
+        "type": 'text',
+        "content": '夫君,身体要紧~ ',
         "date": 1488117964495,
         "name": "孙尚香",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/sunshangxiang.jpg"
@@ -122,7 +151,9 @@ const msglist = {
       "newMsgCount": 4,
       "quiet": true,
       "msg": [{
-        "text": '三姓家奴！ ',
+        "sender": 'gy',
+        "type": 'text',
+        "content": '三姓家奴！ ',
         "date": 1488117964495,
         "name": "关羽",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/guangyu.jpg"

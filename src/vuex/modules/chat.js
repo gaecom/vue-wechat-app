@@ -62,7 +62,9 @@ const chat = {
     }
   },
   mutations: {
-
+    //addMsg: (state, data) => {
+    //  state = Object.assign(state, data)
+    //},
   }
 }
 
