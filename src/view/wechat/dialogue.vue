@@ -18,10 +18,12 @@
               v-show='$route.query.group_num&&$route.query.group_num!=1'>{{$route.query.group_num}}</span>
       </div>
     </header>
+
     <section class="dialogue-section clearfix" @click="MenuOutsideClick">
-      <div class="row clearfix" v-for="item in msgInfo.msg">
-        <img :src="item.headerUrl" class="header">
-        <p class="text" v-more>{{item.text}}</p>
+      <div class="row clearfix" :class="msgClass(item)" v-for="item in msgInfo.msg">
+        <img :src="item.headerUrl">
+        <!--<p class="text" v-more v-html="replaceMsg(item.content)"></p>-->
+        <p class="text" v-more>{{ item.content }}</p>
       </div>
       <span class="msg-more" id="msg-more"><ul>
         <li>复制</li>
@@ -30,6 +32,7 @@
         <li>删除</li>
       </ul></span>
     </section>
+
     <footer class="dialogue-footer">
       <div class="component-dialogue-bar-person">
         <span class="iconfont icon-dialogue-jianpan" v-show="!currentChatWay" @click="currentChatWay=true"></span>
@@ -41,12 +44,22 @@
           </div>
         </div>
         <div class="chat-way" v-show="currentChatWay">
-          <input class="chat-txt" type="text" @focus="focusIpt" @blur="blurIpt"/>
+          <input class="chat-txt" type="text" v-model="inputValue" @focus="focusIpt" @blur="blurIpt"/>
         </div>
-        <span class="expression iconfont icon-dialogue-smile"></span>
-        <span class="more iconfont icon-dialogue-jia"></span>
-        <div class="recording" style="display: none;" id="recording">
-          <div class="recording-voice" style="display: none;" id="recording-voice">
+        <span class="expression iconfont icon-dialogue-smile" @click="showEmoji = !showEmoji"></span>
+        <span class="more iconfont icon-dialogue-jia" v-show="inputValue.length===0"></span>
+        <span class="sendButton" v-show="inputValue.length>0" @click="sendMsg">发送</span>
+
+        <!--表情面板-->
+        <div class="emojiBox" v-show="showEmoji">
+          <li v-for="(item, index) in emojis">
+            <img :src="item.file" :data="item.code" @click="inputValue += item.code">
+          </li>
+        </div>
+
+        <!--语音提示-->
+        <div class="recording" id="recording">
+          <div class="recording-voice" id="recording-voice">
             <div class="voice-inner">
               <div class="voice-icon"></div>
               <div class="voice-volume">
@@ -73,10 +86,14 @@
   </div>
 </template>
 <script>
+  import util from '@/utils/util.js'
+
   export default {
     data() {
       return {
         pageName: this.$route.query.name,
+        inputValue: '',
+        showEmoji: false, //显示表情面板
         currentChatWay: true, //ture为键盘打字 false为语音输入
         timer: null
         // sayActive: false // false 键盘打字 true 语音输入
@@ -88,12 +105,21 @@
 //    })
 //    },
     computed: {
+      emojis() { //表情数据
+        return this.$store.getters.doneEmojis
+      },
       msgInfo() {
         for (var i in this.$store.state.msgList.baseMsg) {
           if (this.$store.state.msgList.baseMsg[i].mid == this.$route.query.mid) {
             return this.$store.state.msgList.baseMsg[i]
           }
         }
+      }
+    },
+    filters: {
+      formatTime: function (value) { //时间格式化
+        if (!value) return ''
+        return util.formatDateTime(value)
       }
     },
     directives: {
@@ -186,12 +212,12 @@
     methods: {
       // 解决输入法被激活时 底部输入框被遮住问题
       focusIpt() {
-        this.timer = setInterval(function () {
-          document.body.scrollTop = document.body.scrollHeight
-        }, 100)
+//        this.timer = setInterval(function () {
+//          document.body.scrollTop = document.body.scrollHeight
+//        }, 100)
       },
       blurIpt() {
-        clearInterval(this.timer)
+//        clearInterval(this.timer)
       },
       // 点击空白区域，菜单被隐藏
       MenuOutsideClick(e) {
@@ -204,7 +230,46 @@
           container.forEach(item => item.style.backgroundColor = '#fff'
         )
         }
-      }
+      },
+      isShowTime(item, index) { //该消息是否需要显示日期
+        if (index === 0) return true
+
+        let startTime = this.record[index - 1].time
+        let endTime = item.time
+        if (Math.abs(endTime - startTime) > 3 * 60 * 1000) { //消息间隔超过3分钟显示时间
+          return true
+        }
+        return false
+      },
+      msgClass(item) { //消息样式
+        return item.sender === 'self' ? 'right-msg' : 'left-msg'
+      },
+      replaceMsg (con) {
+        if (con.includes('/:')) { //将输入的内容中属于表情的部分替换成emoji图片标签
+          var emojis = this.emojis
+          for (var i = 0; i < emojis.length; i++) {
+            con = con.replace(emojis[i].reg, `<img src="${emojis[i].file}" alt="" style="vertical-align: middle; width: 24px; height: 24px" />`)
+          }
+          return con
+        }
+      },
+      sendMsg() { //发送消息
+        let parmas = {
+          mid: this.$route.query.mid,
+          item: {
+            "sender": 'self',
+            "type": 'text',
+            "text": this.inputValue,
+            "date": new Date().getTime(),
+            "name": "我",
+            "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
+          }
+        }
+        this.$store.commit('addMsg', parmas)
+
+        this.inputValue = ''
+        this.showEmoji = false
+      },
     }
   }
 </script>
