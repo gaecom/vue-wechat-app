@@ -50,7 +50,7 @@
     <div class="initial-bar"><span @click="toPs(i)" v-for="i in contactsInitialList">{{i}}</span></div>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   export default {
     data() {
       return {

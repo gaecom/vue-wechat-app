@@ -3,7 +3,7 @@
     <img src="https://sinacloud.net/vue-wechat/images/welcome.jpg" alt="">
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   export default {
     data() {
       return {

@@ -61,7 +61,7 @@
     </div>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   export default {
     mounted(){
       console.log(this.$route.query.msgInfo)

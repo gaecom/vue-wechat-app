@@ -19,12 +19,18 @@
       </div>
     </header>
 
-    <section class="dialogue-section clearfix" @click="MenuOutsideClick">
-      <div class="row clearfix" :class="msgClass(item)" v-for="item in msgInfo.msg">
-        <img :src="item.headerUrl">
-        <!--<p class="text" v-more v-html="replaceMsg(item.content)"></p>-->
-        <p class="text" v-more>{{ item.content }}</p>
-      </div>
+    <section ref="msglist" class="dialogue-section clearfix" @click="MenuOutsideClick">
+      <template v-for="(item,index) in msgInfo.msg">
+        <div class="row clearfix center" v-show="isShowTime(item, index)">
+          <span class="time">{{ item.date | formatTime }}</span>
+        </div>
+        <div class="row clearfix" :class="msgClass(item)">
+          <img :src="item.headerUrl">
+          <p class="text" v-more>
+            <span v-html="replaceMsg(item.content)">{{ item.content }}</span>
+          </p>
+        </div>
+      </template>
       <span class="msg-more" id="msg-more"><ul>
         <li>复制</li>
         <li>转发</li>
@@ -39,8 +45,8 @@
         <span class="iconfont icon-dialogue-voice" v-show="currentChatWay" @click="currentChatWay=false"></span>
         <div class="chat-way" v-show="!currentChatWay">
           <div class="chat-say" v-press>
-            <span class="one">按住 说话</span>
-            <span class="two">松开 结束</span>
+            <span class="chat-say-one">按住 说话</span>
+            <span class="chat-say-two">松开 结束</span>
           </div>
         </div>
         <div class="chat-way" v-show="currentChatWay">
@@ -85,7 +91,7 @@
     </footer>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   import util from '@/utils/util.js'
 
   export default {
@@ -96,20 +102,14 @@
         showEmoji: false, //显示表情面板
         currentChatWay: true, //ture为键盘打字 false为语音输入
         timer: null
-        // sayActive: false // false 键盘打字 true 语音输入
       }
     },
-//    beforeRouteEnter(to, from, next) {
-//      next(vm => {
-//        vm.$store.commit("setPageName", vm.$route.query.name)
-//    })
-//    },
     computed: {
       emojis() { //表情数据
         return this.$store.getters.doneEmojis
       },
       msgInfo() {
-        for (var i in this.$store.state.msgList.baseMsg) {
+        for (let i in this.$store.state.msgList.baseMsg) {
           if (this.$store.state.msgList.baseMsg[i].mid == this.$route.query.mid) {
             return this.$store.state.msgList.baseMsg[i]
           }
@@ -117,32 +117,35 @@
       }
     },
     filters: {
-      formatTime: function (value) { //时间格式化
+      formatTime: (value) => { //时间格式化
         if (!value) return ''
         return util.formatDateTime(value)
       }
     },
     directives: {
-      press: {
+      press: { //长按录音事件
         inserted(element, binding) {
-          var recording = document.querySelector('.recording'),
+          // 用bind时，vue还没插入到dom,故dom获取为 undefine，用 inserted 代替 bind,也可以开个0秒的定时器
+          let recording = document.querySelector('.recording'),
             recordingVoice = document.querySelector('.recording-voice'),
             recordingCancel = document.querySelector('.recording-cancel'),
+            chatsayOne = document.querySelector('.chat-say-one'),
+            chatsayTwo = document.querySelector('.chat-say-two'),
             startTx, startTy;
 
           element.addEventListener('touchstart', function (e) {
-            // 用bind时，vue还没插入到dom,故dom获取为 undefine，用 inserted 代替 bind,也可以开个0秒的定时器
             element.className = "chat-say say-active"
             recording.style.display = recordingVoice.style.display = "block"
-            // console.log('start')
-            var touches = e.touches[0]
+            chatsayOne.style.display = "none"
+            chatsayTwo.style.display = "block"
+            let touches = e.touches[0]
             startTx = touches.clientX
             startTy = touches.clientY
             e.preventDefault()
           }, false)
           element.addEventListener('touchend', function (e) {
-            /*var touches = e.changedTouches[0];
-             var distanceY = startTy - touches.clientY;
+            /*let touches = e.changedTouches[0];
+             let distanceY = startTy - touches.clientY;
              if (distanceY > 50) {
              console.log("取消发送信息");
              }else{
@@ -151,11 +154,12 @@
 
             element.className = "chat-say"
             recordingCancel.style.display = recording.style.display = recordingVoice.style.display = "none"
-            // console.log('end')
+            chatsayOne.style.display = "block"
+            chatsayTwo.style.display = "none"
             e.preventDefault()
           }, false)
           element.addEventListener('touchmove', function (e) {
-            var touches = e.changedTouches[0],
+            let touches = e.changedTouches[0],
               endTx = touches.clientX,
               endTy = touches.clientY,
               distanceX = startTx - endTx,
@@ -175,29 +179,28 @@
           }, false);
         }
       },
-      more: {
+      more: { //长按消息菜单
         bind(element, binding) {
-          var startTx, startTy
+          let startTx, startTy
           element.addEventListener('touchstart', function (e) {
-            var msgMore = document.getElementById('msg-more'),
+            let msgMore = document.getElementById('msg-more'),
               touches = e.touches[0];
             startTx = touches.clientX
             startTy = touches.clientY
 
             clearTimeout(this.timer)
             this.timer = setTimeout(() => {
-              // 控制菜单的位置
-              msgMore.style.left = ((startTx - 18) > 180 ? 180 : (startTx - 18)) + 'px'
-            msgMore.style.top = (element.offsetTop - 33) + 'px'
-            msgMore.style.display = "block"
-            element.style.backgroundColor = '#e5e5e5'
-          },
-            500
+                // 控制菜单的位置
+                msgMore.style.left = ((startTx - 18) > 180 ? 180 : (startTx - 18)) + 'px'
+                msgMore.style.top = (element.offsetTop - 33) + 'px'
+                msgMore.style.display = "block"
+                element.style.backgroundColor = '#e5e5e5'
+              },
+              500
             )
-
           }, false)
           element.addEventListener('touchmove', function (e) {
-            var touches = e.changedTouches[0],
+            let touches = e.changedTouches[0],
               disY = touches.clientY;
             if (Math.abs(disY - startTy) > 10) {
               clearTimeout(this.timer)
@@ -221,25 +224,25 @@
       },
       // 点击空白区域，菜单被隐藏
       MenuOutsideClick(e) {
-        var container = document.querySelectorAll('.text'),
+        let container = document.querySelectorAll('.text'),
           msgMore = document.getElementById('msg-more')
         if (e.target.className === 'text') {
 
         } else {
           msgMore.style.display = 'none'
-          container.forEach(item => item.style.backgroundColor = '#fff'
-        )
+//          container.forEach(item => item.style.backgroundColor = '#fff')
         }
       },
       isShowTime(item, index) { //该消息是否需要显示日期
-        if (index === 0) return true
-
-        let startTime = this.record[index - 1].time
-        let endTime = item.time
-        if (Math.abs(endTime - startTime) > 3 * 60 * 1000) { //消息间隔超过3分钟显示时间
-          return true
-        }
-        return false
+//        if (index === 0) return true
+//
+//        let startTime = this.record[index - 1].date
+//        let endTime = item.date
+//        if (Math.abs(endTime - startTime) > 3 * 60 * 1000) { //消息间隔超过3分钟显示时间
+//          return true
+//        }
+//        return false
+        return true
       },
       msgClass(item) { //消息样式
         return item.sender === 'self' ? 'right-msg' : 'left-msg'
@@ -252,6 +255,8 @@
           }
           return con
         }
+        con = con.replace(new RegExp('\n', 'gm'), '<br/>')
+        return con
       },
       sendMsg() { //发送消息
         let parmas = {
@@ -259,7 +264,7 @@
           item: {
             "sender": 'self',
             "type": 'text',
-            "text": this.inputValue,
+            "content": this.inputValue,
             "date": new Date().getTime(),
             "name": "我",
             "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
@@ -267,8 +272,15 @@
         }
         this.$store.commit('addMsg', parmas)
 
+        this.listScrollTo()
         this.inputValue = ''
         this.showEmoji = false
+      },
+      listScrollTo() { //消息列表滚动到最底部
+        let dom = this.$refs.msglist
+        this.$nextTick(function () {
+          dom.scrollTo(0, dom.scrollHeight)
+        })
       },
     }
   }

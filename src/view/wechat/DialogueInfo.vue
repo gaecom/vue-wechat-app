@@ -88,7 +88,7 @@
     <span class="weui-btn weui-btn_warn" style="margin-top: 15px;padding: 0 20px; width:90%;">删除并退出</span>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   export default {
     data() {
       return {

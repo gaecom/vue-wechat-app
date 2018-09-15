@@ -51,7 +51,7 @@
     </div>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   import Search from '@/components/Search'
   export default {
     components: {

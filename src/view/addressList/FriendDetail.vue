@@ -64,7 +64,7 @@
 
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   import contact from "../../vuex/data/contacts"
   export default {
     data() {

@@ -212,7 +212,7 @@
     </div>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   import PhotoSwipe from 'photoswipe'
   import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
   import 'photoswipe/dist/photoswipe.css'

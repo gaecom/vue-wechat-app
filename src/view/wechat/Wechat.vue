@@ -8,7 +8,7 @@
     </ul>
   </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
   import Search from '@/components/Search'
   import MsgList from "@/components/MsgList"
   export default {

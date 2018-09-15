@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   import WxHeader from '@/layout/WxHeader'
   import WxFooter from '@/layout/WxFooter'
   import Welcome from '@/components/Welcome'
