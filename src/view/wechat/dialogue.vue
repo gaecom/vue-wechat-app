@@ -259,7 +259,7 @@
         return con
       },
       sendMsg() { //发送消息
-        let parmas = {
+        let params = {
           mid: this.$route.query.mid,
           item: {
             "sender": 'self',
@@ -270,7 +270,7 @@
             "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
           }
         }
-        this.$store.commit('addMsg', parmas)
+        this.$store.commit('addMsg', params)
 
         this.listScrollTo()
         this.inputValue = ''
