@@ -46,10 +46,10 @@ const mutations = {
   },
 
   //新增一条发送消息
-  addMsg: (state, parmas) => {
+  addMsg: (state, params) => {
     state.msgList.baseMsg.forEach(function(item, index) {
-      if(item.mid == parmas.mid) {
-        item.msg.push(parmas.item)
+      if(item.mid == params.mid) {
+        item.msg.push(params.item)
       }
     })
   },
