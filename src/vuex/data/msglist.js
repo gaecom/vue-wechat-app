@@ -1,45 +1,47 @@
 import contact from './contacts' //存放所有联系人的数据
 const msglist = {
   stickMsg: [], //置顶消息列表 后期需要
-  baseMsg: [{ //普通消息列表
-    "mid": 1, //消息的id 唯一标识，重要
-    "type": "friend",
-    "group_name": "",
-    "group_qrCode": "",
-    "read": true, //true；已读 false：未读
-    "newMsgCount": 1,
-    "quiet": false, // true：消息免打扰 false：提示此好友/群的新消息
-    "msg": [{ //对话框的聊天记录 新消息 push 进
-      "sender": 'ad',
-      "type": 'text',
-      "content": "长按这些白色框消息，唤醒消息操作菜单，长按这些白色框消息，唤醒消息操作菜单",
-      "date": 1546589641000,
-      "name": "阿荡",
-      "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
-    }, {
-      "sender": 'ad',
-      "type": 'text',
-      "content": '点击空白处，操作菜单消失',
-      "date": 1546590830000,
-      "name": "阿荡",
-      "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
-    }, {
-      "sender": 'self',
-      "type": 'text',
-      "content": '你好',
-      "date": 1546590840000,
-      "name": "我",
-      "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
-    }, {
-      "sender": 'ad',
-      "type": 'text',
-      "content": '来呀 快活啊',
-      "date": 1548403850000,
-      "name": "阿荡",
-      "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
-    }],
-    "user": [contact.getUserInfo('wxid_zhaohd')] // 此消息的用户数组 长度为1则为私聊 长度大于1则为群聊
-  },
+  baseMsg: [ //普通消息列表
+    {
+      "mid": 1, //消息的id 唯一标识，重要
+      "type": "friend",
+      "group_name": "",
+      "group_qrCode": "",
+      "read": true, //true；已读 false：未读
+      "newMsgCount": 1,
+      "quiet": false, // true：消息免打扰 false：提示此好友/群的新消息
+      "msg": [
+        { //对话框的聊天记录 新消息 push 进
+          "sender": 'ad',
+          "type": 'text',
+          "content": "长按这些白色框消息，唤醒消息操作菜单，长按这些白色框消息，唤醒消息操作菜单",
+          "date": 1546589641000,
+          "name": "阿荡",
+          "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
+        }, {
+          "sender": 'ad',
+          "type": 'text',
+          "content": '点击空白处，操作菜单消失',
+          "date": 1546590830000,
+          "name": "阿荡",
+          "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
+        }, {
+          "sender": 'self',
+          "type": 'text',
+          "content": '你好',
+          "date": 1546590840000,
+          "name": "我",
+          "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
+        }, {
+          "sender": 'ad',
+          "type": 'text',
+          "content": '来呀 快活啊',
+          "date": 1548403850000,
+          "name": "阿荡",
+          "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
+        }],
+        "user": [contact.getUserInfo('wxid_zhaohd')] // 此消息的用户数组 长度为1则为私聊 长度大于1则为群聊
+    },
     {
       "mid": 2,
       "type": "group",
@@ -154,7 +156,7 @@ const msglist = {
         "sender": 'gy',
         "type": 'text',
         "content": '三姓家奴！ ',
-        "date": 1549958491713,
+        "date": 1549960328060,
         "name": "关羽",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/guangyu.jpg"
       }],
