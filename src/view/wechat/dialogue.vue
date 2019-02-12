@@ -119,7 +119,7 @@
     filters: {
       formatTime: (value) => { //时间格式化
         if (!value) return ''
-        return util.formatDateTime(value)
+        return util.chatFormatTime(value)
       }
     },
     directives: {
@@ -234,15 +234,14 @@
         }
       },
       isShowTime(item, index) { //该消息是否需要显示日期
-//        if (index === 0) return true
-//
-//        let startTime = this.record[index - 1].date
-//        let endTime = item.date
-//        if (Math.abs(endTime - startTime) > 3 * 60 * 1000) { //消息间隔超过3分钟显示时间
-//          return true
-//        }
-//        return false
-        return true
+        if (index === 0) return true
+
+        let startTime = this.msgInfo.msg[index - 1].date
+        let endTime = item.date
+        if (Math.abs(endTime - startTime) > 3 * 60 * 1000) { //消息间隔超过3分钟显示时间
+          return true
+        }
+        return false
       },
       msgClass(item) { //消息样式
         return item.sender === 'self' ? 'right-msg' : 'left-msg'
