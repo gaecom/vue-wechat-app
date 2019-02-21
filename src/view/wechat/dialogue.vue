@@ -22,7 +22,7 @@
     <section ref="msglist" class="dialogue-section clearfix" @click="MenuOutsideClick">
       <template v-for="(item,index) in msgInfo.msg">
         <div class="row clearfix center" v-show="isShowTime(item, index)">
-          <span class="time">{{ item.date | formatTime }}</span>
+          <span class="time">{{ item.date | chatFormatTime }}</span>
         </div>
         <div class="row clearfix" :class="msgClass(item)">
           <img :src="item.headerUrl">
@@ -114,12 +114,6 @@
             return this.$store.state.msgList.baseMsg[i]
           }
         }
-      }
-    },
-    filters: {
-      formatTime: (value) => { //时间格式化
-        if (!value) return ''
-        return util.chatFormatTime(value)
       }
     },
     directives: {
