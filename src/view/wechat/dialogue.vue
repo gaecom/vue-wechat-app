@@ -109,9 +109,9 @@
         return this.$store.getters.doneEmojis
       },
       msgInfo() {
-        for (let i in this.$store.state.msgList.baseMsg) {
-          if (this.$store.state.msgList.baseMsg[i].mid == this.$route.query.mid) {
-            return this.$store.state.msgList.baseMsg[i]
+        for (let i in this.$store.state.chat.msgList.baseMsg) {
+          if (this.$store.state.chat.msgList.baseMsg[i].mid == this.$route.query.mid) {
+            return this.$store.state.chat.msgList.baseMsg[i]
           }
         }
       }
@@ -264,6 +264,7 @@
           }
         }
         this.$store.commit('addMsg', params)
+        this.$store.commit('setMsgSort', 'lastMsgDate')
 
         this.listScrollTo()
         this.inputValue = ''
