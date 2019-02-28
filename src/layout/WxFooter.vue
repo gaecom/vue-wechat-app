@@ -45,8 +45,8 @@
       }
     },
     mounted() {
-      for (var i in this.$store.state.msgList.baseMsg) {
-        if (this.$store.state.msgList.baseMsg[i].read === false && this.$store.state.msgList.baseMsg[i].quiet === false) {
+      for (var i in this.$store.state.chat.msgList.baseMsg) {
+        if (this.$store.state.chat.msgList.baseMsg[i].read === false && this.$store.state.chat.msgList.baseMsg[i].quiet === false) {
           this.$store.commit('addNewMsg')
         }
       }

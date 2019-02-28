@@ -1,5 +1,9 @@
+import msglist from '../data/msglist' //存放消息列表的数据
+
 const chat = {
   state: {
+    newMsgCount: 0, //新消息数量
+    msgList: msglist, //消息列表
     emojis: [ //emoji表情
       { file: '100.gif', code: '/::)', title: '微笑',reg:/\/::\)/g },
       { file: '101.gif', code: '/::~', title: '伤心',reg:/\/::~/g },
@@ -62,9 +66,44 @@ const chat = {
     }
   },
   mutations: {
-    //addMsg: (state, data) => {
-    //  state = Object.assign(state, data)
-    //},
+
+    //增加未读消息数
+    addNewMsg(state) {
+      state.newMsgCount > 99 ? state.newMsgCount = "99+" : state.newMsgCount++
+    },
+    //减少未读消息数
+    minusNewMsg(state) {
+      state.newMsgCount < 1 ? state.newMsgCount = 0 : state.newMsgCount--
+    },
+
+    //将消息置顶 待完成
+    setMsgStick(state, mid) {
+
+    },
+    //取消置顶消息 待完成
+    cancelMsgStick(state, mid) {
+
+    },
+
+    //新增一条发送消息
+    addMsg: (state, params) => {
+      state.msgList.baseMsg.forEach(function(item, index) {
+        if(item.mid == params.mid) {
+          item.lastMsgDate = params.item.date
+          item.lastMsgContent = params.item.content
+          item.msg.push(params.item)
+        }
+      })
+    },
+
+    //设置聊天数据排序（降序）
+    setMsgSort: (state, pro) => {
+      state.msgList.baseMsg.sort((a,b) => {
+        var value1 = a[pro];
+        var value2 = b[pro];
+        return value2 - value1;
+      })
+    },
   }
 }
 

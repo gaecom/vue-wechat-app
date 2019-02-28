@@ -1,5 +1,6 @@
 // 全局mutations
 const mutations = {
+
   //切换语言 后期需要
   switchLang(state, lang) {
     state.currentLang = lang
@@ -27,31 +28,5 @@ const mutations = {
     }
   },
 
-  //增加未读消息数
-  addNewMsg(state) {
-    state.newMsgCount > 99 ? state.newMsgCount = "99+" : state.newMsgCount++
-  },
-  //减少未读消息数
-  minusNewMsg(state) {
-    state.newMsgCount < 1 ? state.newMsgCount = 0 : state.newMsgCount--
-  },
-
-  //将消息置顶 待完成
-  setMsgStick(state, mid) {
-
-  },
-  //取消置顶消息 待完成
-  cancelMsgStick(state, mid) {
-
-  },
-
-  //新增一条发送消息
-  addMsg: (state, params) => {
-    state.msgList.baseMsg.forEach(function(item, index) {
-      if(item.mid == params.mid) {
-        item.msg.push(params.item)
-      }
-    })
-  },
 }
 export default mutations

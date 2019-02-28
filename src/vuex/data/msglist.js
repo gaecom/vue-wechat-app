@@ -1,7 +1,7 @@
 import contact from './contacts' //存放所有联系人的数据
 const msglist = {
   stickMsg: [], //置顶消息列表 后期需要
-  baseMsg: [ //普通消息列表
+  baseMsg: [ //消息列表
     {
       "mid": 1, //消息的id 唯一标识，重要
       "type": "friend",
@@ -10,6 +10,8 @@ const msglist = {
       "read": true, //true；已读 false：未读
       "newMsgCount": 1,
       "quiet": false, // true：消息免打扰 false：提示此好友/群的新消息
+      "lastMsgDate": 1548403850000,
+      "lastMsgContent": '来呀 快活啊',
       "msg": [
         { //对话框的聊天记录 新消息 push 进
           "sender": 'ad',
@@ -50,6 +52,8 @@ const msglist = {
       "read": false,
       "newMsgCount": 1,
       "quiet": true,
+      "lastMsgDate": 1547797570000,
+      "lastMsgContent": '我试一试',
       "msg": [{
         "sender": 'yh',
         "type": 'text',
@@ -84,6 +88,8 @@ const msglist = {
       "read": true,
       "newMsgCount": 1,
       "quiet": true,
+      "lastMsgDate": 1547798978000,
+      "lastMsgContent": '冒个泡',
       "msg": [{
         "sender": 'zgl',
         "type": 'text',
@@ -102,6 +108,8 @@ const msglist = {
       "read": false,
       "newMsgCount": 4,
       "quiet": false,
+      "lastMsgDate": 1548144313000,
+      "lastMsgContent": '容我三思',
       "msg": [{
         "sender": 'sq',
         "type": 'text',
@@ -134,6 +142,8 @@ const msglist = {
       "read": false,
       "newMsgCount": 4,
       "quiet": false,
+      "lastMsgDate": 1549958491713,
+      "lastMsgContent": '夫君,身体要紧~',
       "msg": [{
         "sender": 'ssx',
         "type": 'text',
@@ -152,10 +162,12 @@ const msglist = {
       "read": false,
       "newMsgCount": 4,
       "quiet": true,
+      "lastMsgDate": 1549960328060,
+      "lastMsgContent": '三姓家奴！',
       "msg": [{
         "sender": 'gy',
         "type": 'text',
-        "content": '三姓家奴！ ',
+        "content": '三姓家奴！',
         "date": 1549960328060,
         "name": "关羽",
         "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/guangyu.jpg"
