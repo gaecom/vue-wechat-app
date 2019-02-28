@@ -109,9 +109,9 @@
         return this.$store.getters.doneEmojis
       },
       msgInfo() {
-        for (let i in this.$store.state.chat.msgList.baseMsg) {
-          if (this.$store.state.chat.msgList.baseMsg[i].mid == this.$route.query.mid) {
-            return this.$store.state.chat.msgList.baseMsg[i]
+        for (let i in this.$store.getters.msgList) {
+          if (this.$store.getters.msgList[i].mid == this.$route.query.mid) {
+            return this.$store.getters.msgList[i]
           }
         }
       }

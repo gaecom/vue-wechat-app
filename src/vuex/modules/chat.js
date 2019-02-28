@@ -1,9 +1,11 @@
-import msglist from '../data/msglist' //存放消息列表的数据
+import stickMsg from '../data/stickMsg' //存放置顶消息列表的数据
+import baseMsg from '../data/baseMsg' //存放普通消息列表的数据
 
 const chat = {
   state: {
     newMsgCount: 0, //新消息数量
-    msgList: msglist, //消息列表
+    stickMsg: stickMsg, //置顶消息列表
+    baseMsg: baseMsg, //普通消息列表
     emojis: [ //emoji表情
       { file: '100.gif', code: '/::)', title: '微笑',reg:/\/::\)/g },
       { file: '101.gif', code: '/::~', title: '伤心',reg:/\/::~/g },
@@ -58,6 +60,9 @@ const chat = {
     ],
   },
   getters: {
+    msgList: state => { //消息列表（置顶+普通）
+      return state.stickMsg.concat(state.baseMsg)
+    },
     doneEmojis: state => { //emoji表情带上图片路径
       return state.emojis.map((item, index) => {
         item.file = require("@/assets/images/emoji/"+item.file)
@@ -87,7 +92,7 @@ const chat = {
 
     //新增一条发送消息
     addMsg: (state, params) => {
-      state.msgList.baseMsg.forEach(function(item, index) {
+      state.baseMsg.forEach(function(item, index) {
         if(item.mid == params.mid) {
           item.lastMsgDate = params.item.date
           item.lastMsgContent = params.item.content
@@ -98,7 +103,7 @@ const chat = {
 
     //设置聊天数据排序（降序）
     setMsgSort: (state, pro) => {
-      state.msgList.baseMsg.sort((a,b) => {
+      state.baseMsg.sort((a,b) => {
         var value1 = a[pro];
         var value2 = b[pro];
         return value2 - value1;
