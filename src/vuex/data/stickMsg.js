@@ -5,7 +5,7 @@ const stickMsg = [ //置顶消息列表
     "type": "friend",
     "group_name": "",
     "group_qrCode": "",
-    //"read": true,
+    "stick": true,
     "newMsgCount": 1,
     "quiet": false,
     "lastMsgDate": 1549958491713,

@@ -1,7 +1,6 @@
 <template>
   <div class="dialogue-info">
     <header id="wx-header">
-      <!--<div class="other"><span>添加朋友</span></div>-->
       <div class="center">
         <div class="iconfont icon-return-arrow" @click="$router.back()">
           <span>返回</span>
@@ -62,10 +61,6 @@
       </div>
     </div>
     <div class="weui-cells">
-      <div class="weui-cell weui-cell_access">
-        <div class="weui-cell__bd">聊天文件</div>
-        <div class="weui-cell__ft"></div>
-      </div>
       <div class="weui-cell weui-cell_access">
         <div class="weui-cell__bd">查找聊天内容</div>
         <div class="weui-cell__ft"></div>

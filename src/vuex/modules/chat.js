@@ -60,10 +60,28 @@ const chat = {
     ],
   },
   getters: {
-    msgList: state => { //消息列表（置顶+普通）
+    //消息列表（置顶+普通）
+    msgList: state => {
+      //state.stickMsg.forEach( item => {
+      //  item.stick = true
+      //})
+      //state.baseMsg.forEach( item => {
+      //  item.stick = false
+      //})
       return state.stickMsg.concat(state.baseMsg)
     },
-    doneEmojis: state => { //emoji表情带上图片路径
+
+    //新消息个数（屏蔽的不计入）
+    newMsgCount: (state, getters) => {
+      let count = 0
+      getters.msgList.forEach(item => {
+        if(!item.quiet) count += item.newMsgCount
+      })
+      return count
+    },
+
+    //emoji表情带上图片路径
+    doneEmojis: state => {
       return state.emojis.map((item, index) => {
         item.file = require("@/assets/images/emoji/"+item.file)
         return item

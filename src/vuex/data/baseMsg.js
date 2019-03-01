@@ -5,7 +5,7 @@ const baseMsg = [ //普通消息列表
     "type": "friend", //消息类型
     "group_name": "", //群名称
     "group_qrCode": "", //群code 唯一标识
-    //"read": true, //true：已读  false：未读
+    "stick": false, //true：置顶  false：不置顶
     "newMsgCount": 3, //新消息个数
     "quiet": false, // true：消息免打扰  false：提示此好友/群的新消息
     "lastMsgDate": 1548403850000, //最新消息时间
@@ -47,7 +47,7 @@ const baseMsg = [ //普通消息列表
     "type": "group",
     "group_name": "收购万达讨论群",
     "group_qrCode": "",
-    //"read": true,
+    "stick": false,
     "newMsgCount": 2,
     "quiet": false,
     "lastMsgDate": 1547797570000,
@@ -83,7 +83,7 @@ const baseMsg = [ //普通消息列表
     "type": "group",
     "group_name": "收购淘宝群",
     "group_qrCode": "",
-    //"read": true,
+    "stick": false,
     "newMsgCount": 1,
     "quiet": true,
     "lastMsgDate": 1547798978000,
@@ -103,7 +103,7 @@ const baseMsg = [ //普通消息列表
     "type": "friend",
     "group_name": "",
     "group_qrCode": "",
-    //"read": true,
+    "stick": false,
     "newMsgCount": 0,
     "quiet": false,
     "lastMsgDate": 1548144313000,
@@ -137,7 +137,7 @@ const baseMsg = [ //普通消息列表
     "type": "friend",
     "group_name": "",
     "group_qrCode": "",
-    //"read": true,
+    "stick": false,
     "newMsgCount": 1,
     "quiet": true,
     "lastMsgDate": 1549960328060,

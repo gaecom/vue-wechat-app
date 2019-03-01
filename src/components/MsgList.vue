@@ -4,7 +4,7 @@
   <li :class="{'item-hide':deleteMsg}">
     <!--自定义指令 v-swiper 用于对每个消息进行滑动处理-->
     <router-link
-      :to="{ path: '/wechat/dialogue', query: { mid: item.mid,name:item.group_name||(item.user[0].remark||item.user[0].nickname),group_num:item.user.length}}"
+      :to="{ path: '/wechat/dialogue', query: { mid: item.mid,type: item.type,name: item.group_name||item.user[0].remark||item.user[0].nickname,group_num: item.user.length}}"
       tag="div" class="list-info" v-swiper @click.native="toggleMsgRead($event,'enter')">
       <div class="header-box">
         <template v-if="item.newMsgCount>0">

@@ -18,7 +18,7 @@ const contacts = [{ //昵称备注都有的朋友
   "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png",
   "nickname": "阿荡",
   "sex": 1,
-  "remark": "阿荡",
+  "remark": "阿荡哥",
   "signature": "填坑小能手",
   "telphone": 18896586152,
   "album": [{
@@ -175,7 +175,7 @@ const contacts = [{ //昵称备注都有的朋友
     "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/sunquan.jpg",
     "nickname": "孙权",
     "sex": 1,
-    "remark": "孙权",
+    "remark": "",
     "signature": "容我三思",
     "telphone": 18896586152,
     "album": [{

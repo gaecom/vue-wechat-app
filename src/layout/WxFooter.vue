@@ -3,7 +3,7 @@
     <nav>
       <router-link  v-for="(item,index) in navMenu" :key="index" :to="item.to" tag="dl">
         <dt class="iconfont" :class="item.icon">
-          <i class="new-msg-count" v-if="item.to==='/wechat'" v-show="newMsgCount>0">{{ newMsgCount }}</i>
+          <i class="new-msg-count" v-if="item.to==='/wechat'" v-show="$store.getters.newMsgCount>0">{{ $store.getters.newMsgCount }}</i>
           <i class="new-msg-dot" v-if="item.to==='/explore'" v-show="item.msgNum"></i>
           <i class="new-msg-count" v-else v-show="item.msgNum">{{ item.msgNum }}</i>
         </dt>
@@ -45,14 +45,14 @@
       }
     },
     computed: {
-      newMsgCount() {
-        let count = 0
-        this.$store.getters.msgList.forEach(item => {
-          //显示新消息个数（屏蔽的不计入）
-          if(!item.quiet) count += item.newMsgCount
-        })
-        return count
-      },
+//      newMsgCount() {
+//        let count = 0
+//        this.$store.getters.msgList.forEach(item => {
+//          //显示新消息个数（屏蔽的不计入）
+//          if(!item.quiet) count += item.newMsgCount
+//        })
+//        return count
+//      },
     },
     mounted() {
 

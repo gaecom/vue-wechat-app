@@ -1,7 +1,6 @@
 <template>
   <div>
     <header id="wx-header">
-      <!--<div class="other"><span>添加朋友</span></div>-->
       <div class="center">
         <div class="iconfont icon-return-arrow" @click="$router.back()">
           <span>返回</span>
@@ -13,7 +12,7 @@
       <ul class="chat-dialogue-entry-collect">
         <li v-for="item in $route.query.msgInfo.user">
           <div><img :src="item.headerUrl"></div>
-          <p>{{item.remark||item.nickname}}</p>
+          <p>{{ item.remark||item.nickname }}</p>
         </li>
         <li>
           <div><span class="iconfont icon-chat-detail-add"></span></div>
@@ -23,18 +22,12 @@
     <div class="weui-cells">
       <div class="weui-cell weui-cell_switch">
         <div class="weui-cell__bd">置顶聊天</div>
-        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch"></div>
+        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch" v-model="msgInfo.stick"></div>
       </div>
       <div class="weui-cell weui-cell_switch">
         <div class="weui-cell__bd">消息免打扰</div>
-        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch" v-model="$route.query.msgInfo.quiet">
+        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch" v-model="msgInfo.quiet">
         </div>
-      </div>
-    </div>
-    <div class="weui-cells">
-      <div class="weui-cell weui-cell_access">
-        <div class="weui-cell__bd">聊天文件</div>
-        <div class="weui-cell__ft"></div>
       </div>
     </div>
     <div class="weui-cells">
@@ -46,8 +39,6 @@
         <div class="weui-cell__bd">查找聊天内容</div>
         <div class="weui-cell__ft"></div>
       </div>
-    </div>
-    <div class="weui-cells">
       <div class="weui-cell">
         <div class="weui-cell__bd">清空聊天记录</div>
         <div class="weui-cell__ft"></div>
@@ -63,8 +54,31 @@
 </template>
 <script type="text/ecmascript-6">
   export default {
+    data() {
+      return {
+        msgInfo: this.$route.query.msgInfo
+      }
+    },
+    watch: {
+      //切换置顶/不置顶状态
+      'msgInfo.stick'(newV, oldV) {
+        this.$store.commit('setMsgAttribute', {
+          mid: this.msgInfo.mid,
+          pro: 'stick',
+          value: newV,
+        })
+      },
+      //切换消息免打扰/提醒状态
+      'msgInfo.quiet'(newV, oldV) {
+        this.$store.commit('setMsgAttribute', {
+          mid: this.msgInfo.mid,
+          pro: 'quiet',
+          value: newV,
+        })
+      },
+    },
     mounted(){
-      console.log(this.$route.query.msgInfo)
+
     }
   }
 
