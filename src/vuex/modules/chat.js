@@ -3,7 +3,7 @@ import baseMsg from '../data/baseMsg' //存放普通消息列表的数据
 
 const chat = {
   state: {
-    newMsgCount: 0, //新消息数量
+    newMsgCount: 2, //新消息数量
     stickMsg: stickMsg, //置顶消息列表
     baseMsg: baseMsg, //普通消息列表
     emojis: [ //emoji表情
@@ -72,15 +72,6 @@ const chat = {
   },
   mutations: {
 
-    //增加未读消息数
-    addNewMsg(state) {
-      state.newMsgCount > 99 ? state.newMsgCount = "99+" : state.newMsgCount++
-    },
-    //减少未读消息数
-    minusNewMsg(state) {
-      state.newMsgCount < 1 ? state.newMsgCount = 0 : state.newMsgCount--
-    },
-
     //将消息置顶 待完成
     setMsgStick(state, mid) {
 
@@ -90,13 +81,34 @@ const chat = {
 
     },
 
-    //新增一条发送消息
-    addMsg: (state, params) => {
-      state.baseMsg.forEach(function(item, index) {
-        if(item.mid == params.mid) {
-          item.lastMsgDate = params.item.date
-          item.lastMsgContent = params.item.content
-          item.msg.push(params.item)
+    //设置消息列表数据某个属性的值
+    setMsgAttribute(state, obj) {
+      state.stickMsg.forEach( item => {
+        if(item.mid == obj.mid) {
+          item[obj.pro] = obj.value
+        }
+      })
+      state.baseMsg.forEach( item => {
+        if(item.mid == obj.mid) {
+          item[obj.pro] = obj.value
+        }
+      })
+    },
+
+    //新增一条消息
+    addMsg: (state, obj) => {
+      state.stickMsg.forEach( item => {
+        if(item.mid == obj.mid) {
+          item.lastMsgDate = obj.item.date
+          item.lastMsgContent = obj.item.content
+          item.msg.push(obj.item)
+        }
+      })
+      state.baseMsg.forEach( item => {
+        if(item.mid == obj.mid) {
+          item.lastMsgDate = obj.item.date
+          item.lastMsgContent = obj.item.content
+          item.msg.push(obj.item)
         }
       })
     },

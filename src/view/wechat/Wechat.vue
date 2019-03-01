@@ -20,6 +20,10 @@
       return {
 
       }
+    },
+    created() {
+      // 消息列表排序
+      this.$store.commit('setMsgSort', 'lastMsgDate')
     }
   }
 </script>

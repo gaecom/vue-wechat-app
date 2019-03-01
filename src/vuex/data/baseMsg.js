@@ -1,15 +1,15 @@
 import contact from './contacts' //存放所有联系人的数据
 const baseMsg = [ //普通消息列表
   {
-    "mid": 1, //消息的id 唯一标识，重要
-    "type": "friend",
-    "group_name": "",
-    "group_qrCode": "",
-    "read": true, //true；已读 false：未读
-    "newMsgCount": 1,
-    "quiet": false, // true：消息免打扰 false：提示此好友/群的新消息
-    "lastMsgDate": 1548403850000,
-    "lastMsgContent": '来呀 快活啊',
+    "mid": 1, //消息的id 唯一标识
+    "type": "friend", //消息类型
+    "group_name": "", //群名称
+    "group_qrCode": "", //群code 唯一标识
+    //"read": true, //true：已读  false：未读
+    "newMsgCount": 3, //新消息个数
+    "quiet": false, // true：消息免打扰  false：提示此好友/群的新消息
+    "lastMsgDate": 1548403850000, //最新消息时间
+    "lastMsgContent": '来呀 快活啊', // 最新消息内容
     "msg": [
       { //对话框的聊天记录 新消息 push 进
         "sender": 'ad',
@@ -47,9 +47,9 @@ const baseMsg = [ //普通消息列表
     "type": "group",
     "group_name": "收购万达讨论群",
     "group_qrCode": "",
-    "read": false,
-    "newMsgCount": 1,
-    "quiet": true,
+    //"read": true,
+    "newMsgCount": 2,
+    "quiet": false,
     "lastMsgDate": 1547797570000,
     "lastMsgContent": '我试一试',
     "msg": [{
@@ -81,9 +81,9 @@ const baseMsg = [ //普通消息列表
   {
     "mid": 3,
     "type": "group",
-    "group_name": "收购淘宝讨论群",
+    "group_name": "收购淘宝群",
     "group_qrCode": "",
-    "read": true,
+    //"read": true,
     "newMsgCount": 1,
     "quiet": true,
     "lastMsgDate": 1547798978000,
@@ -103,8 +103,8 @@ const baseMsg = [ //普通消息列表
     "type": "friend",
     "group_name": "",
     "group_qrCode": "",
-    "read": false,
-    "newMsgCount": 4,
+    //"read": true,
+    "newMsgCount": 0,
     "quiet": false,
     "lastMsgDate": 1548144313000,
     "lastMsgContent": '容我三思',
@@ -137,8 +137,8 @@ const baseMsg = [ //普通消息列表
     "type": "friend",
     "group_name": "",
     "group_qrCode": "",
-    "read": false,
-    "newMsgCount": 4,
+    //"read": true,
+    "newMsgCount": 1,
     "quiet": true,
     "lastMsgDate": 1549960328060,
     "lastMsgContent": '三姓家奴！',
