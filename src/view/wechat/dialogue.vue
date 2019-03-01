@@ -4,18 +4,23 @@
       <div class="other">
         <router-link :to="{path:'/wechat/dialogue/dialogue-detail',query: { msgInfo: msgInfo}}" tag="span"
                      class="iconfont icon-chat-friends"
-                     v-show="$route.query.group_num==1"></router-link>
+                     v-show="type==='friend'"></router-link>
         <router-link :to="{path:'/wechat/dialogue/dialogue-info',query: { msgInfo: msgInfo}}" tag="span"
                      class="iconfont icon-chat-group"
-                     v-show="$route.query.group_num&&$route.query.group_num!=1"></router-link>
+                     v-show="type==='group'"></router-link>
       </div>
+
       <div class="center">
         <router-link to="/" tag="div" class="iconfont icon-return-arrow">
           <span>微信</span>
+          <!--新消息个数-->
+          <span v-show="$store.getters.newMsgCount>0">({{ $store.getters.newMsgCount }})</span>
         </router-link>
+
+        <!--好友名称、群聊名称-->
         <span>{{pageName}}</span>
-        <span class="parentheses"
-              v-show='$route.query.group_num&&$route.query.group_num!=1'>{{$route.query.group_num}}</span>
+        <!--成员个数-->
+        <span class="parentheses" v-show="type==='group'">{{$route.query.group_num}}</span>
       </div>
     </header>
 
@@ -97,6 +102,7 @@
   export default {
     data() {
       return {
+        type: this.$route.query.type,
         pageName: this.$route.query.name,
         inputValue: '',
         showEmoji: false, //显示表情面板
