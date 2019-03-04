@@ -98,6 +98,12 @@
           pro: 'stick',
           value: newV,
         })
+        this.$store.commit('setMsgAttribute', {
+          mid: this.msgInfo.mid,
+          pro: 'lastMsgDate',
+          value: new Date().getTime(),
+        })
+        this.$store.commit('setMsgSort')
       },
       //切换消息免打扰/提醒状态
       'msgInfo.quiet'(newV) {

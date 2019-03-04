@@ -23,7 +23,7 @@
     },
     created() {
       // 消息列表排序
-      this.$store.commit('setMsgSort', 'lastMsgDate')
+      this.$store.commit('setMsgSort')
     }
   }
 </script>

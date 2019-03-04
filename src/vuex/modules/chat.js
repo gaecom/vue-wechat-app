@@ -107,12 +107,13 @@ const chat = {
       })
     },
 
-    //设置聊天数据排序（降序）
-    setMsgSort: (state, pro) => {
+    //设置聊天顺序（先置顶后排序）
+    setMsgSort: (state) => {
       state.msgList.sort((a,b) => {
-        var value1 = a[pro];
-        var value2 = b[pro];
-        return value2 - value1;
+        if(a.stick && !b.stick) return -1
+        else if(!a.stick && b.stick) return 1
+
+        return b.lastMsgDate - a.lastMsgDate;
       })
     },
   }
