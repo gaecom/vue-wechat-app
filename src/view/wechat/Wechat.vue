@@ -3,7 +3,7 @@
   <div id="wechat">
     <ul class="wechat-list">
       <!--props传递消息对象 baseMsgObj -->
-      <msg-list v-for="baseMsgObj in $store.getters.msgList" :item="baseMsgObj" class="list-row line-bottom"
+      <msg-list v-for="baseMsgObj in $store.state.chat.msgList" :item="baseMsgObj" class="list-row line-bottom"
                 :key="baseMsgObj.mid"></msg-list>
     </ul>
   </div>

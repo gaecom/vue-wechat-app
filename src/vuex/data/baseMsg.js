@@ -1,5 +1,5 @@
 import contact from './contacts' //存放所有联系人的数据
-const baseMsg = [ //普通消息列表
+const baseMsg = [ //消息列表
   {
     "mid": 1, //消息的id 唯一标识
     "type": "friend", //消息类型
@@ -131,6 +131,26 @@ const baseMsg = [ //普通消息列表
       "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/sunquan.jpg"
     }],
     "user": [contact.getUserInfo('wxid_sunquan')]
+  },
+  {
+    "mid": 5,
+    "type": "friend",
+    "group_name": "",
+    "group_qrCode": "",
+    "stick": true,
+    "newMsgCount": 1,
+    "quiet": false,
+    "lastMsgDate": 1549958491713,
+    "lastMsgContent": '夫君,身体要紧~',
+    "msg": [{
+      "sender": 'ssx',
+      "type": 'text',
+      "content": '夫君,身体要紧~ ',
+      "date": 1549958491713,
+      "name": "孙尚香",
+      "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/sunshangxiang.jpg"
+    }],
+    "user": [contact.getUserInfo('wxid_sunshangxiang')]
   },
   {
     "mid": 6,

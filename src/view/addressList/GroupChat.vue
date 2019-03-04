@@ -40,9 +40,9 @@
       // 从消息数据中提取出群聊列表 不严谨 应该新建 groups.js，存放所有群聊数据
       groupList() {
         var temp = []
-        for (var i in this.$store.getters.msgList) {
-          if (this.$store.getters.msgList[i].type === 'group') {
-            temp.push(this.$store.getters.msgList[i])
+        for (var i in this.$store.state.chat.msgList) {
+          if (this.$store.state.chat.msgList[i].type === 'group') {
+            temp.push(this.$store.state.chat.msgList[i])
           }
         }
         return temp

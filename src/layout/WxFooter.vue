@@ -44,16 +44,6 @@
         ]
       }
     },
-    computed: {
-//      newMsgCount() {
-//        let count = 0
-//        this.$store.getters.msgList.forEach(item => {
-//          //显示新消息个数（屏蔽的不计入）
-//          if(!item.quiet) count += item.newMsgCount
-//        })
-//        return count
-//      },
-    },
     mounted() {
 
     }

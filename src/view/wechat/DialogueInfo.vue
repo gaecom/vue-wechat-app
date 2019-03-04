@@ -36,19 +36,18 @@
     </div>
     <div class="weui-cells">
       <div class="weui-cell weui-cell_switch">
-        <div class="weui-cell__bd">消息免打扰</div>
-        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch" v-model="$route.query.msgInfo.quiet">
-        </div>
+        <div class="weui-cell__bd">置顶聊天</div>
+        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch" v-model="msgInfo.stick"></div>
       </div>
       <div class="weui-cell weui-cell_switch">
-        <div class="weui-cell__bd">置顶聊天</div>
-        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch"></div>
+        <div class="weui-cell__bd">消息免打扰</div>
+        <div class="weui-cell__ft"><input type="checkbox" class="weui-switch" v-model="msgInfo.quiet">
+        </div>
       </div>
       <div class="weui-cell weui-cell_switch">
         <div class="weui-cell__bd">保存到通讯录</div>
         <div class="weui-cell__ft"><input type="checkbox" class="weui-switch"></div>
       </div>
-
     </div>
     <div class="weui-cells">
       <div class="weui-cell weui-cell_access">
@@ -87,8 +86,30 @@
   export default {
     data() {
       return {
+        msgInfo: this.$route.query.msgInfo,
         showNickname: true
       }
+    },
+    watch: {
+      //切换置顶/不置顶状态
+      'msgInfo.stick'(newV) {
+        this.$store.commit('setMsgAttribute', {
+          mid: this.msgInfo.mid,
+          pro: 'stick',
+          value: newV,
+        })
+      },
+      //切换消息免打扰/提醒状态
+      'msgInfo.quiet'(newV) {
+        this.$store.commit('setMsgAttribute', {
+          mid: this.msgInfo.mid,
+          pro: 'quiet',
+          value: newV,
+        })
+      },
+    },
+    mounted(){
+
     }
   }
 </script>

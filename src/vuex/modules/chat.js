@@ -1,11 +1,9 @@
-import stickMsg from '../data/stickMsg' //存放置顶消息列表的数据
-import baseMsg from '../data/baseMsg' //存放普通消息列表的数据
+import baseMsg from '../data/baseMsg' //存放消息列表的数据
 
 const chat = {
   state: {
     newMsgCount: 2, //新消息数量
-    stickMsg: stickMsg, //置顶消息列表
-    baseMsg: baseMsg, //普通消息列表
+    msgList: baseMsg, //消息列表
     emojis: [ //emoji表情
       { file: '100.gif', code: '/::)', title: '微笑',reg:/\/::\)/g },
       { file: '101.gif', code: '/::~', title: '伤心',reg:/\/::~/g },
@@ -60,21 +58,11 @@ const chat = {
     ],
   },
   getters: {
-    //消息列表（置顶+普通）
-    msgList: state => {
-      //state.stickMsg.forEach( item => {
-      //  item.stick = true
-      //})
-      //state.baseMsg.forEach( item => {
-      //  item.stick = false
-      //})
-      return state.stickMsg.concat(state.baseMsg)
-    },
 
     //新消息个数（屏蔽的不计入）
     newMsgCount: (state, getters) => {
       let count = 0
-      getters.msgList.forEach(item => {
+      state.msgList.forEach(item => {
         if(!item.quiet) count += item.newMsgCount
       })
       return count
@@ -101,12 +89,7 @@ const chat = {
 
     //设置消息列表数据某个属性的值
     setMsgAttribute(state, obj) {
-      state.stickMsg.forEach( item => {
-        if(item.mid == obj.mid) {
-          item[obj.pro] = obj.value
-        }
-      })
-      state.baseMsg.forEach( item => {
+      state.msgList.forEach( item => {
         if(item.mid == obj.mid) {
           item[obj.pro] = obj.value
         }
@@ -115,14 +98,7 @@ const chat = {
 
     //新增一条消息
     addMsg: (state, obj) => {
-      state.stickMsg.forEach( item => {
-        if(item.mid == obj.mid) {
-          item.lastMsgDate = obj.item.date
-          item.lastMsgContent = obj.item.content
-          item.msg.push(obj.item)
-        }
-      })
-      state.baseMsg.forEach( item => {
+      state.msgList.forEach( item => {
         if(item.mid == obj.mid) {
           item.lastMsgDate = obj.item.date
           item.lastMsgContent = obj.item.content
@@ -133,7 +109,7 @@ const chat = {
 
     //设置聊天数据排序（降序）
     setMsgSort: (state, pro) => {
-      state.baseMsg.sort((a,b) => {
+      state.msgList.sort((a,b) => {
         var value1 = a[pro];
         var value2 = b[pro];
         return value2 - value1;

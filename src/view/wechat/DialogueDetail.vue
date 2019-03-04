@@ -61,7 +61,7 @@
     },
     watch: {
       //切换置顶/不置顶状态
-      'msgInfo.stick'(newV, oldV) {
+      'msgInfo.stick'(newV) {
         this.$store.commit('setMsgAttribute', {
           mid: this.msgInfo.mid,
           pro: 'stick',
@@ -69,7 +69,7 @@
         })
       },
       //切换消息免打扰/提醒状态
-      'msgInfo.quiet'(newV, oldV) {
+      'msgInfo.quiet'(newV) {
         this.$store.commit('setMsgAttribute', {
           mid: this.msgInfo.mid,
           pro: 'quiet',
