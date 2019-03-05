@@ -29,7 +29,7 @@
           <div class="desc-mute iconfont icon-mute" v-show="item.quiet"></div>
           <!--显示最新消息-->
           <span v-show="item.type=='group'">{{item.msg[item.msg.length-1].name}}:</span>
-          <span>{{item.msg[item.msg.length-1].content}}</span>
+          <span v-html="replaceMsg(item.msg[item.msg.length-1].content)"></span>
         </div>
       </div>
     </router-link>
@@ -41,7 +41,10 @@
   </li>
 </template>
 <script type="text/ecmascript-6">
+  import emojis from '@/mixins/emojis.js'
+
   export default {
+    mixins: [emojis],
     props: ["item"],
     data() {
       return {

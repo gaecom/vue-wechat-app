@@ -1,5 +1,5 @@
 <template>
-  <div class="dialogue">
+  <div class="dialogue" @click="clickEvent">
     <header id="wx-header">
       <div class="other">
         <router-link :to="{path:'/wechat/dialogue/dialogue-detail',query: { msgInfo: msgInfo}}" tag="span"
@@ -24,16 +24,14 @@
       </div>
     </header>
 
-    <section ref="msglist" class="dialogue-section clearfix" @click="MenuOutsideClick">
+    <section ref="msglist" class="dialogue-section clearfix" @click="menuOutsideClick">
       <template v-for="(item,index) in msgInfo.msg">
         <div class="row clearfix center" v-show="isShowTime(item, index)">
           <span class="time">{{ item.date | chatFormatTime }}</span>
         </div>
         <div class="row clearfix" :class="msgClass(item)">
           <img :src="item.headerUrl">
-          <p class="text" v-more>
-            <span v-html="replaceMsg(item.content)">{{ item.content }}</span>
-          </p>
+          <p class="text" v-html="replaceMsg(item.content)" v-more></p>
         </div>
       </template>
       <span class="msg-more" id="msg-more"><ul>
@@ -55,7 +53,8 @@
           </div>
         </div>
         <div class="chat-way" v-show="currentChatWay">
-          <input class="chat-txt" type="text" v-model="inputValue" @focus="focusIpt" @blur="blurIpt"/>
+          <!--<input class="chat-txt" type="text" v-model="inputValue" @focus="focusIpt" @blur="blurIpt"/>-->
+          <div ref="inputDiv" class="chat-txt" contenteditable="true" @input="changeText"></div>
         </div>
         <span class="expression iconfont icon-dialogue-smile" @click="showEmoji = !showEmoji"></span>
         <span class="more iconfont icon-dialogue-jia" v-show="inputValue.length===0"></span>
@@ -63,7 +62,7 @@
 
         <!--表情面板-->
         <div class="emojiBox" v-show="showEmoji">
-          <li v-for="(item, index) in emojis">
+          <li v-for="(item, index) in $store.getters.doneEmojis" @click="inputEmojis(item)">
             <img :src="item.file" :data="item.code" @click="inputValue += item.code">
           </li>
         </div>
@@ -98,8 +97,10 @@
 </template>
 <script type="text/ecmascript-6">
   import util from '@/utils/util.js'
+  import emojis from '@/mixins/emojis.js'
 
   export default {
+    mixins: [emojis],
     data() {
       return {
         type: this.$route.query.type,
@@ -111,9 +112,6 @@
       }
     },
     computed: {
-      emojis() { //表情数据
-        return this.$store.getters.doneEmojis
-      },
       msgInfo() {
         for (let i in this.$store.state.chat.msgList) {
           if (this.$store.state.chat.msgList[i].mid == this.$route.query.mid) {
@@ -213,7 +211,15 @@
       }
     },
     methods: {
-      // 解决输入法被激活时 底部输入框被遮住问题
+      //消息页面击触发事件
+      clickEvent(event) {
+        if(event.target.className.indexOf('icon-dialogue-smile') > -1
+          || event.target.className === 'emojiBox'
+          || (event.target.offsetParent && event.target.offsetParent.className === 'emojiBox')){
+
+        }else this.showEmoji = false
+      },
+      //解决输入法被激活时 底部输入框被遮住问题
       focusIpt() {
 //        this.timer = setInterval(function () {
 //          document.body.scrollTop = document.body.scrollHeight
@@ -222,8 +228,9 @@
       blurIpt() {
 //        clearInterval(this.timer)
       },
-      // 点击空白区域，菜单被隐藏
-      MenuOutsideClick(e) {
+
+      //点击空白区域，菜单被隐藏
+      menuOutsideClick(e) {
         let container = document.querySelectorAll('.text'),
           msgMore = document.getElementById('msg-more')
         if (e.target.className === 'text') {
@@ -233,7 +240,9 @@
 //          container.forEach(item => item.style.backgroundColor = '#fff')
         }
       },
-      isShowTime(item, index) { //该消息是否需要显示日期
+
+      //该消息是否需要显示日期
+      isShowTime(item, index) {
         if (index === 0) return true
 
         let startTime = this.msgInfo.msg[index - 1].date
@@ -243,21 +252,27 @@
         }
         return false
       },
-      msgClass(item) { //消息样式
+      //消息样式
+      msgClass(item) {
         return item.sender === 'self' ? 'right-msg' : 'left-msg'
       },
-      replaceMsg (con) {
-        if (con.includes('/:')) { //将输入的内容中属于表情的部分替换成emoji图片标签
-          var emojis = this.emojis
-          for (var i = 0; i < emojis.length; i++) {
-            con = con.replace(emojis[i].reg, `<img src="${emojis[i].file}" alt="" style="vertical-align: middle; width: 24px; height: 24px" />`)
-          }
-          return con
-        }
-        con = con.replace(new RegExp('\n', 'gm'), '<br/>')
-        return con
+
+      //输入表情
+      inputEmojis(item) {
+        this.$refs.inputDiv.innerHTML += `<img src="${item.file}" alt="${item.title}" style="width: 44px; height: 44px;vertical-align: middle;">`
+        this.inputValue = this.$refs.inputDiv.innerHTML
+        this.$refs.inputDiv.focus()
+        this.keepLastIndex(this.$refs.inputDiv)
+
+//        this.$refs.emojibox.style.bottom = this.$refs.ftbtn.offsetHeight + 'px' //表情面板位置随输入内容自动调整
       },
-      sendMsg() { //发送消息
+      //输入框修改内容
+      changeText() {
+        this.inputValue = this.$refs.inputDiv.innerHTML
+//        this.$refs.emojibox.style.bottom = this.$refs.ftbtn.offsetHeight + 'px' //表情面板位置随输入内容自动调整
+      },
+      //发送消息
+      sendMsg() {
         let params = {
           mid: this.$route.query.mid,
           item: {
@@ -270,17 +285,33 @@
           }
         }
         this.$store.commit('addMsg', params)
-        this.$store.commit('setMsgSort', 'lastMsgDate')
+        this.$store.commit('setMsgSort')
 
         this.listScrollTo()
+        this.$refs.inputDiv.innerHTML = ''
         this.inputValue = ''
         this.showEmoji = false
       },
-      listScrollTo() { //消息列表滚动到最底部
+
+      //消息列表滚动到最底部
+      listScrollTo() {
         let dom = this.$refs.msglist
         this.$nextTick(function () {
           dom.scrollTo(0, dom.scrollHeight)
         })
+      },
+      //输入框光标移动到最后
+      keepLastIndex(el) {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        range.collapse(false);
+        var sel = window.getSelection();
+        //判断光标位置，如不需要可删除
+        if (sel.anchorOffset != 0) {
+          return;
+        }
+        sel.removeAllRanges();
+        sel.addRange(range);
       },
     }
   }
