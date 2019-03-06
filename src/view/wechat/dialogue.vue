@@ -11,11 +11,11 @@
       </div>
 
       <div class="center">
-        <router-link to="/" tag="div" class="iconfont icon-return-arrow">
+        <div class="iconfont icon-return-arrow" @click="$router.back()">
           <span>微信</span>
           <!--新消息个数-->
           <span v-show="$store.getters.newMsgCount>0">({{ $store.getters.newMsgCount }})</span>
-        </router-link>
+        </div>
 
         <!--好友名称、群聊名称-->
         <span>{{pageName}}</span>
@@ -103,6 +103,7 @@
     mixins: [emojis],
     data() {
       return {
+        mid: this.$route.query.mid,
         type: this.$route.query.type,
         pageName: this.$route.query.name,
         inputValue: '',
@@ -119,6 +120,14 @@
           }
         }
       }
+    },
+    mounted() {
+      //设置newMsgCount为0
+      this.$store.commit('setMsgAttribute', {
+        mid: this.mid,
+        pro: 'newMsgCount',
+        value: 0,
+      })
     },
     directives: {
       press: { //长按录音事件

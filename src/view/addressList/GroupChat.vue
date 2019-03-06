@@ -13,7 +13,7 @@
     <search></search>
     <section class="weui-cells">
       <template v-for="groupInfo in groupList">
-        <a class="weui-cell weui-cell_access">
+        <a class="weui-cell weui-cell_access" @click="goGroupChat(groupInfo)">
           <div class="weui-cell__hd header-box">
             <div class="header multi-header">
               <img v-for="user in groupInfo.user" :src="user.headerUrl">
@@ -47,7 +47,21 @@
         }
         return temp
       }
-    }
+    },
+    methods: {
+      //进入聊天窗口
+      goGroupChat(item) {
+        this.$router.push({
+          path: '/wechat/dialogue',
+          query: {
+            mid: item.mid,
+            type: item.type,
+            name: item.group_name,
+            group_num: item.user.length,
+          }
+        })
+      },
+    },
   }
 </script>
 <style>

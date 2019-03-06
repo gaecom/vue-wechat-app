@@ -5,7 +5,7 @@
     <!--自定义指令 v-swiper 用于对每个消息进行滑动处理-->
     <router-link
       :to="{ path: '/wechat/dialogue', query: { mid: item.mid,type: item.type,name: item.group_name||item.user[0].remark||item.user[0].nickname,group_num: item.user.length}}"
-      tag="div" class="list-info" v-swiper @click.native="toggleMsgRead($event,'enter')">
+      tag="div" :class="{'list-info':true, 'stick':item.stick}" v-swiper>
       <div class="header-box">
         <template v-if="item.newMsgCount>0">
           <!--未读并且未屏蔽 才显示新信息数量-->
@@ -53,15 +53,16 @@
     },
     methods: {
       //切换消息未读/已读状态
-      toggleMsgRead(event, status) {
+      toggleMsgRead(event) {
         //设置newMsgCount状态
         let num = this.item.newMsgCount===0 ? 1 : 0
         this.$store.commit('setMsgAttribute', {
           mid: this.item.mid,
           pro: 'newMsgCount',
-          value: status==='enter' ? 0 : num,
+          value: num,
         })
 
+        //滑动点击后，列表样式还原
         event.target.parentNode.parentNode.firstChild.style.marginLeft = 0 + "px"
       },
       //删除消息列表
@@ -69,7 +70,6 @@
         this.deleteMsg = true
       }
     },
-    // 参考 https://vuefe.cn/v2/guide/custom-directive.html
     directives: {
       swiper: {
         bind: function (element, binding) {
