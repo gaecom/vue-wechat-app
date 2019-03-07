@@ -1,9 +1,11 @@
-import baseMsg from '../data/baseMsg' //存放消息列表的数据
+import msgList from '../data/msgList' //存放消息列表的数据
+import groupList from '../data/groups' //存放群组列表的数据
 
 const chat = {
   state: {
     newMsgCount: 2, //新消息数量
-    msgList: baseMsg, //消息列表
+    msgList: msgList, //消息列表
+    groupList: groupList, //群组列表
     emojis: [ //emoji表情
       { file: '100.gif', code: '/::)', title: '微笑',reg:/\/::\)/g },
       { file: '101.gif', code: '/::~', title: '伤心',reg:/\/::~/g },
@@ -58,9 +60,22 @@ const chat = {
     ],
   },
   getters: {
+    //好友消息列表
+    msgListFriend: state => {
+      return state.msgList.filter(item => {
+        return item.type === 'friend'
+      })
+    },
+
+    //群消息列表
+    msgListGroup: state => {
+      return state.msgList.filter(item => {
+        return item.type === 'group'
+      })
+    },
 
     //新消息个数（屏蔽的不计入）
-    newMsgCount: (state, getters) => {
+    newMsgCount: state => {
       let count = 0
       state.msgList.forEach(item => {
         if(!item.quiet) count += item.newMsgCount

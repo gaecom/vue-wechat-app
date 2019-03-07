@@ -11,11 +11,11 @@
       </div>
 
       <div class="center">
-        <div class="iconfont icon-return-arrow" @click="$router.back()">
+        <router-link to="/" tag="div" class="iconfont icon-return-arrow">
           <span>微信</span>
           <!--新消息个数-->
           <span v-show="$store.getters.newMsgCount>0">({{ $store.getters.newMsgCount }})</span>
-        </div>
+        </router-link>
 
         <!--好友名称、群聊名称-->
         <span>{{pageName}}</span>
@@ -119,6 +119,8 @@
             return this.$store.state.chat.msgList[i]
           }
         }
+
+        return []
       }
     },
     mounted() {

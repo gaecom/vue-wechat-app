@@ -12,7 +12,7 @@
     <!--这里的 search 组件的样式需要修改一下-->
     <search></search>
     <section class="weui-cells">
-      <template v-for="groupInfo in groupList">
+      <template v-for="groupInfo in $store.state.chat.groupList">
         <a class="weui-cell weui-cell_access" @click="goGroupChat(groupInfo)">
           <div class="weui-cell__hd header-box">
             <div class="header multi-header">
@@ -38,15 +38,15 @@
     },
     computed: {
       // 从消息数据中提取出群聊列表 不严谨 应该新建 groups.js，存放所有群聊数据
-      groupList() {
-        var temp = []
-        for (var i in this.$store.state.chat.msgList) {
-          if (this.$store.state.chat.msgList[i].type === 'group') {
-            temp.push(this.$store.state.chat.msgList[i])
-          }
-        }
-        return temp
-      }
+//      groupList() {
+//        var temp = []
+//        for (var i in this.$store.state.chat.msgList) {
+//          if (this.$store.state.chat.msgList[i].type === 'group') {
+//            temp.push(this.$store.state.chat.msgList[i])
+//          }
+//        }
+//        return temp
+//      }
     },
     methods: {
       //进入聊天窗口
