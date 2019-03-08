@@ -14,7 +14,7 @@ const groups = [ //群组列表
     "type": "group",
     "group_name": "收购淘宝群",
     "group_qrCode": "",
-    "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd')]
+    "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd'), contact.getUserInfo('wxid_guangyu')]
   },
   {
     "id": 3,
@@ -22,7 +22,7 @@ const groups = [ //群组列表
     "type": "group",
     "group_name": "帅哥群",
     "group_qrCode": "",
-    "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd'), contact.getUserInfo('wxid_yehua')]
+    "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd'), contact.getUserInfo('wxid_yehua'), contact.getUserInfo('wxid_guangyu')]
   },
 ]
 export default groups

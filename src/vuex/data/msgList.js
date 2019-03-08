@@ -96,7 +96,7 @@ const msgList = [ //消息列表
       "name": "诸葛亮",
       "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/zhugeliang.jpg"
     }],
-    "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd')]
+    "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd'), contact.getUserInfo('wxid_guangyu')]
   },
   {
     "mid": 4,
@@ -183,7 +183,7 @@ const msgList = [ //消息列表
   //  "lastMsgDate": null,
   //  "lastMsgContent": null,
   //  "msg": [],
-  //  "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd'), contact.getUserInfo('wxid_yehua')]
+  //  "user": [contact.getUserInfo('wxid_zhenji'), contact.getUserInfo('wxid_zhugeliang'), contact.getUserInfo('wxid_zhaohd'), contact.getUserInfo('wxid_yehua'), contact.getUserInfo('wxid_guangyu')]
   //},
 ]
 export default msgList

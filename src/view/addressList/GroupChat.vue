@@ -64,34 +64,6 @@
     },
   }
 </script>
-<style>
-  .header-box {
-    position: relative;
-    float: left;
-    width: 38px;
-    height: 38px;
-    margin-right: 10px;
-  }
-
-  .header-box .header {
-    height: 100%;
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    overflow: hidden;
-    background: #dddbdb;
-  }
-
-  .header-box .header img {
-    width: 10%;
-    height: auto;
-    flex-grow: 2;
-    border: 0;
-  }
-
-  .multi-header img {
-    margin: 1px;
-  }
+<style lang="less">
+  @import "../../assets/less/common.less";
 </style>
