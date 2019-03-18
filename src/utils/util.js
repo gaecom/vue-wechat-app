@@ -1,3 +1,4 @@
+/* 公共方法 */
 const util = {
   // 时间戳格式化
   formatDateTime(time) {
@@ -26,6 +27,39 @@ const util = {
     let d = today.getDate();
     d = d < 10 ? ('0' + d) : d;
     return y + '-' + m + '-' + d;
+  },
+
+  // Base64加密
+  Base64Encode(password) {
+    if(typeof password !== 'string' || password.length === 0) return password
+
+    let pwd = Base64.encode(password)
+    let tmp1 = pwd.substring(0,2)
+    let tmp2 = pwd.substring(2,pwd.length-2)
+    let tmp3 = pwd.substring(pwd.length-2,pwd.length)
+    return tmp3+tmp2+tmp1;
+  },
+  // Base64解密
+  Base64Decode(pwd) {
+    if(typeof pwd !== 'string' || pwd.length === 0) return pwd
+
+    let tmp1 = pwd.substring(0,2)
+    let tmp2 = pwd.substring(2,pwd.length-2)
+    let tmp3 = pwd.substring(pwd.length-2,pwd.length)
+    let password = tmp3+tmp2+tmp1
+    return Base64.decode(password)
+  },
+
+  // 格式化文件大小单位
+  renderSize(value) {
+    if(!value) return "0 Bytes";
+    var unitArr = new Array("Bytes","KB","MB","GB","TB","PB","EB","ZB","YB");
+    var index=0;
+    var srcsize = parseFloat(value);
+    index=Math.floor(Math.log(srcsize)/Math.log(1024));
+    var size =srcsize/Math.pow(1024,index);
+    size=size.toFixed(2);//保留的小数位数
+    return size+unitArr[index];
   },
 }
 
