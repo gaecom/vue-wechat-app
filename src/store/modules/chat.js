@@ -62,16 +62,12 @@ const chat = {
   getters: {
     //好友消息列表
     msgListFriend: state => {
-      return state.msgList.filter(item => {
-        return item.type === 'friend'
-      })
+      return state.msgList.filter(item => item.type === 'friend')
     },
 
     //群消息列表
     msgListGroup: state => {
-      return state.msgList.filter(item => {
-        return item.type === 'group'
-      })
+      return state.msgList.filter(item => item.type === 'group')
     },
 
     //新消息个数（屏蔽的不计入）

@@ -21,21 +21,12 @@ const routes = [
   //  path: '/error',
   //  name: '错误',
   //  component: Error
-  //}
+  //},
+  ...wechat,
+  ...addresslist,
+  ...explore,
+  ...self,
 ]
-
-wechat.map((val) => {
-  routes.push(val)
-})
-addresslist.map((val) => {
-  routes.push(val)
-})
-explore.map((val) => {
-  routes.push(val)
-})
-self.map((val) => {
-  routes.push(val)
-})
 
 export default new VueRouter({
   mode: 'hash',
