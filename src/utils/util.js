@@ -1,4 +1,6 @@
 /* 公共方法 */
+import { Base64 } from 'js-base64'
+
 const util = {
   // 时间戳格式化
   formatDateTime(time) {

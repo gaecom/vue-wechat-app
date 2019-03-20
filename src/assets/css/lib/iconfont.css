@@ -16,7 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/**/
+/* 图标 */
 .icon-tips-jia::before { content: "\e605"; }
 .icon-return-arrow::before { content: "\e60a"; }
 .icon-tips-add-friend::before { content: "\e606"; }
