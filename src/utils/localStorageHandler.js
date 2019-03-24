@@ -1,8 +1,9 @@
 /* 对localStorage中的数据进行统一加密处理，防止数据外泄 */
 import util from '@/utils/util'
 
+const NAME = 'wechatData'
 const localStorageHandler = {
-  dataName: 'wechatData',
+  dataName: NAME,
   getItem: function(name) {
     let obj = getItemData()
     if(obj && obj[name]) {
@@ -35,9 +36,9 @@ export default localStorageHandler
 
 // localStorage取值
 function getItemData() {
-  return JSON.parse(util.Base64Decode( window.localStorage.getItem(this.dataName)))
+  return JSON.parse(util.Base64Decode( window.localStorage.getItem(NAME)))
 }
 // localStorage赋值
 function setItemData(obj) {
-  window.localStorage.setItem(this.dataName, util.Base64Encode(JSON.stringify(obj)))
+  window.localStorage.setItem(NAME, util.Base64Encode(JSON.stringify(obj)))
 }

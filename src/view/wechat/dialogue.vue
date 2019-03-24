@@ -114,9 +114,9 @@
     },
     computed: {
       msgInfo() {
-        for (let i in this.$store.state.chat.msgList) {
-          if (this.$store.state.chat.msgList[i].mid == this.$route.query.mid) {
-            return this.$store.state.chat.msgList[i]
+        for (let item of this.$store.state.chat.msgList) {
+          if (item.mid == this.$route.query.mid) {
+            return item
           }
         }
 
