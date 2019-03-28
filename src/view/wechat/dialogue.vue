@@ -292,7 +292,7 @@
             "content": this.inputValue,
             "date": new Date().getTime(),
             "name": "我",
-            "headerUrl": "https://sinacloud.net/vue-wechat/images/headers/header01.png"
+            "headerUrl": require('@/assets/images/header/header01.png')
           }
         }
         this.$store.commit('addMsg', params)

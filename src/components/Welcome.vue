@@ -1,6 +1,6 @@
 <template>
   <div class="welcome" :class="{hide:hide}">
-    <img src="https://sinacloud.net/vue-wechat/images/welcome.jpg" alt="">
+    <img src="@/assets/images/welcome.jpg">
   </div>
 </template>
 <script type="text/ecmascript-6">

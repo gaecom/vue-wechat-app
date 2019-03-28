@@ -16,13 +16,13 @@
     <p style="padding-top:8px;text-align: center;">
       <span>我的微信号:</span>
       <span>10086</span>
-      <router-link to="/self/profile/myqrcode">&nbsp;<img src="../../assets/images/contact_add-friend-my-qr.png"
+      <router-link to="/self/profile/myqrcode">&nbsp;<img src="@/assets/images/contact_add-friend-my-qr.png"
                                                           style="vertical-align: middle;;width:24px"
                                                           class="_align-middle"></router-link>
     </p>
     <div class="weui-cells">
       <a class="weui-cell weui-cell_access">
-        <div class="weui-cell__hd"><img src="../../assets/images/contact_add-friend-reda.png" alt=""></div>
+        <div class="weui-cell__hd"><img src="@/assets/images/contact_add-friend-reda.png" alt=""></div>
         <div class="weui-cell__bd">
           <p>雷达加朋友</p>
           <p>添加身边的朋友</p>
@@ -30,7 +30,7 @@
         <div class="weui-cell__ft"></div>
       </a>
       <a class="weui-cell weui-cell_access">
-        <div class="weui-cell__hd"><img src="../../assets/images/contact_add-friend-addgroup.png" alt=""></div>
+        <div class="weui-cell__hd"><img src="@/assets/images/contact_add-friend-addgroup.png" alt=""></div>
         <div class="weui-cell__bd">
           <p>面对面建群</p>
           <p>与身边的朋友进入同一个群聊</p>
@@ -38,7 +38,7 @@
         <div class="weui-cell__ft"></div>
       </a>
       <a class="weui-cell weui-cell_access">
-        <div class="weui-cell__hd"><img src="../../assets/images/contact_add-friend-scanqr.png" alt=""></div>
+        <div class="weui-cell__hd"><img src="@/assets/images/contact_add-friend-scanqr.png" alt=""></div>
         <div class="weui-cell__bd">
           <p>扫一扫</p>
           <p>扫描二维码名片</p>
@@ -46,7 +46,7 @@
         <div class="weui-cell__ft"></div>
       </a>
       <a class="weui-cell weui-cell_access">
-        <div class="weui-cell__hd"><img src="../../assets/images/contact_add-friend-contacts.png" alt=""></div>
+        <div class="weui-cell__hd"><img src="@/assets/images/contact_add-friend-contacts.png" alt=""></div>
         <div class="weui-cell__bd">
           <p>手机联系人</p>
           <p>添加通讯录中的朋友</p>
@@ -54,7 +54,7 @@
         <div class="weui-cell__ft"></div>
       </a>
       <a class="weui-cell weui-cell_access">
-        <div class="weui-cell__hd"><img src="../../assets/images/contact_add-friend-offical.png" alt=""></div>
+        <div class="weui-cell__hd"><img src="@/assets/images/contact_add-friend-offical.png" alt=""></div>
         <div class="weui-cell__bd">
           <p>公众号</p>
           <p>获得更多资讯和服务</p>

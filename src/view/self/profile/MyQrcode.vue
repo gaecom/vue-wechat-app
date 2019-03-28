@@ -11,7 +11,7 @@
     </header>
     <section>
       <div class="clearfix">
-        <div class="header"><img src="https://sinacloud.net/vue-wechat/images/headers/header01.png" alt=""
+        <div class="header"><img :src="require('@/assets/images/header/header01.png')" alt=""
                                  style="width:40px"></div>
         <div class="info">
           <p><span>阿荡</span><span class="gender gender-male"></span></p>
@@ -61,7 +61,7 @@
   }
 
   .qrcode #qrcode-pic {
-    background: url("https://sinacloud.net/vue-wechat/images/qrcode.jpg");
+    background: url("../../../assets/images/qrcode.jpg");
     background-size: 100% 100%;
     width: 300px;
     height: 300px;

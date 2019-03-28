@@ -13,7 +13,7 @@
       <div class="home-pic-base">
         <div class="top-pic">
           <div class="top-pic-inner">
-            <img src="https://sinacloud.net/vue-wechat/images/headers/header01.png">
+            <img :src="require('@/assets/images/header/header01.png')">
           </div>
         </div>
         <div class="top-name _ellipsis">阿荡</div>
@@ -21,7 +21,7 @@
     </div>
     <div class="weui-cell moments__post">
       <div class="weui-cell__hd">
-        <img src="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg">
+        <img :src="require('@/assets/images/header/yehua.jpg')">
       </div>
       <div class="weui-cell__bd">
         <!-- 人名链接 -->
@@ -35,18 +35,18 @@
         <!-- 相册 -->
         <div class="thumbnails my-gallery">
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="thumbnail">
-            <a href="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg" itemprop="contentUrl"
+            <a :href="require('@/assets/images/header/yehua.jpg')" itemprop="contentUrl"
                data-size="400x400">
-              <img src="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg" itemprop="thumbnail"
+              <img :src="require('@/assets/images/header/yehua.jpg')" itemprop="thumbnail"
                    alt="Image description"/>
             </a>
             <figcaption itemprop="caption description">Image 01</figcaption>
           </figure>
 
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="thumbnail">
-            <a href="https://sinacloud.net/vue-wechat/images/headers/zhenji.jpg" itemprop="contentUrl"
+            <a :href="require('@/assets/images/header/zhenji.jpg')" itemprop="contentUrl"
                data-size="400x400">
-              <img src="https://sinacloud.net/vue-wechat/images/headers/zhenji.jpg" itemprop="thumbnail"
+              <img :src="require('@/assets/images/header/zhenji.jpg')" itemprop="thumbnail"
                    alt="Image description"/>
             </a>
             <figcaption itemprop="caption description">Image 02</figcaption>
@@ -73,7 +73,7 @@
 
     <div class="weui-cell moments__post">
       <div class="weui-cell__hd">
-        <img src="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg">
+        <img :src="require('@/assets/images/header/yehua.jpg')">
       </div>
       <div class="weui-cell__bd">
         <!-- 人名链接 -->
@@ -87,18 +87,18 @@
         <!-- 相册 -->
         <div class="thumbnails my-gallery">
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="thumbnail">
-            <a href="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg" itemprop="contentUrl"
+            <a :href="require('@/assets/images/header/yehua.jpg')" itemprop="contentUrl"
                data-size="400x400">
-              <img src="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg" itemprop="thumbnail"
+              <img :src="require('@/assets/images/header/yehua.jpg')" itemprop="thumbnail"
                    alt="Image description"/>
             </a>
             <figcaption itemprop="caption description">Image 01</figcaption>
           </figure>
 
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="thumbnail">
-            <a href="https://sinacloud.net/vue-wechat/images/headers/zhugeliang.jpg" itemprop="contentUrl"
+            <a :href="require('@/assets/images/header/zhugeliang.jpg')" itemprop="contentUrl"
                data-size="400x400">
-              <img src="https://sinacloud.net/vue-wechat/images/headers/zhugeliang.jpg" itemprop="thumbnail"
+              <img :src="require('@/assets/images/header/zhugeliang.jpg')" itemprop="thumbnail"
                    alt="Image description"/>
             </a>
             <figcaption itemprop="caption description">Image 02</figcaption>
@@ -123,7 +123,7 @@
     </div>
     <div class="weui-cell moments__post">
       <div class="weui-cell__hd">
-        <img src="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg">
+        <img :src="require('@/assets/images/header/yehua.jpg')">
       </div>
       <div class="weui-cell__bd">
         <!-- 人名链接 -->
@@ -137,18 +137,18 @@
         <!-- 相册 -->
         <div class="thumbnails my-gallery">
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="thumbnail">
-            <a href="https://sinacloud.net/vue-wechat/images/headers/baiqian.jpg" itemprop="contentUrl"
+            <a :href="require('@/assets/images/header/baiqian.jpg')" itemprop="contentUrl"
                data-size="400x400">
-              <img src="https://sinacloud.net/vue-wechat/images/headers/baiqian.jpg" itemprop="thumbnail"
+              <img :src="require('@/assets/images/header/baiqian.jpg')" itemprop="thumbnail"
                    alt="Image description"/>
             </a>
             <figcaption itemprop="caption description">Image 01</figcaption>
           </figure>
 
           <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="thumbnail">
-            <a href="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg" itemprop="contentUrl"
+            <a :href="require('@/assets/images/header/yehua.jpg')" itemprop="contentUrl"
                data-size="400x400">
-              <img src="https://sinacloud.net/vue-wechat/images/headers/yehua.jpg" itemprop="thumbnail"
+              <img :src="require('@/assets/images/header/yehua.jpg')" itemprop="thumbnail"
                    alt="Image description"/>
             </a>
             <figcaption itemprop="caption description">Image 02</figcaption>
