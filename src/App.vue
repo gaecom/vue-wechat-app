@@ -7,7 +7,7 @@
         <wx-header></wx-header>
       </header>
       <!--搜索框 只在“微信”和“通讯录”页面下显示-->
-      <search v-show="$route.path.indexOf('explore')===-1&&$route.path.indexOf('self')===-1"></search>
+      <search v-show="['/wechat','/addresslist'].includes($route.path)"></search>
       <!--四个导航页 “微信” “通讯录” “发现” “我”-->
       <section class="app-content">
         <keep-alive>
@@ -52,13 +52,13 @@
       "$route" (to, from) {
         const toDepth = to.path.split('/').length
         const fromDepth = from.path.split('/').length
-        if (toDepth === 2) { //设置页面头部标题
+        if (toDepth === 2) { //设置页面头部标题—四个导航页 “微信” “通讯录” “发现” “我”
           this.$store.commit("setPageName", to.name)
         }
 
         //同一级页面无需设置过渡效果
         if (toDepth === fromDepth) {
-          return;
+          return
         }
         this.enterAnimate = toDepth > fromDepth ? "animated fadeInRight" : "animated fadeInLeft"
         this.leaveAnimate = toDepth > fromDepth ? "animated fadeOutLeft" : "animated fadeOutRight"
